@@ -1,2 +1,2 @@
 # Lantern
-A interactive web based application for story building.
+An interactive web based application for story building with built in character screens.
