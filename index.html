@@ -10,7 +10,6 @@
 
     <!-- Custom CSS -->
     <link rel="stylesheet" type="text/css" href="css/custom.css">
-</head>
 
 
     <title>Lantern</title>
@@ -24,11 +23,22 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
-    <div class="container">
+    <div class="container-fluid">
+    	<div id="top" class="row">
+    		<div id="mapPage" class="col-md-6">Map</div>
+    		<div id="writingPage"class="col-md-6">Writing</div>
+    	</div>
     	<div class="row">
-    		<div class="col-md-4">1</div>
-    		<div class="col-md-4">2</div>
-    		<div class="col-md-4">3</div>
+    		<div id="wordPad" class="col-md-6">Typing Field
+    			<form action="/action_page.php">
+  					<textarea type="text" id="writingArea" name="storyType" rows="20" cols="50" placeholder="Begin your story here..."></textarea>
+  					<br>
+  					<input type="submit" value="Save">
+				</form> 
+    		</div>
+    		<div id="refrences" class="col-md-6">Linking Area
+
+    		</div>
     	</div>
     </div>
   </body>
