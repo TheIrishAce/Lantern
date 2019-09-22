@@ -28,21 +28,51 @@
 	$CharacterAppearance = $_POST['characterAppearance'];
 	$CharacterSpecies = $_POST['characterSpecies'];
 
-	//php variable called sql that stores the SQL insert query.
-	//INSERTS INTO the locations table (Column1, Column2) the values (our previous defined variables from above)
-	$sql = "INSERT INTO characters (CharacterName,CharacterAge,CharacterDob,CharacterGender,CharacterRace,CharacterPersonality,CharacterAppearance,CharacterSpecies) VALUES ('$CharacterName','$CharacterAge','$CharacterDob','$CharacterGender','$CharacterRace','$CharacterPersonality','$CharacterAppearance','$CharacterSpecies')";
+	if(!empty($CharacterName)  && !empty($CharacterAge) && !empty($CharacterDob) && !empty($CharacterGender) && !empty($CharacterRace) && !empty($CharacterPersonality) && !empty($CharacterAppearance) && !empty($CharacterSpecies)){
 
-	//check if the connection wasn't made and/or the the query wasn't run properly
-	if (!mysqli_query($con,$sql)) 
-	{
-		echo 'ERROR, Not Inserted';
+		//Sanitized variables from above, each variable uses different filters depending on variable type eg: String or Int.
+		$CharacterName = filter_var($CharacterName, FILTER_SANITIZE_STRING);
+		$CharacterAge = filter_var($CharacterAge, FILTER_SANITIZE_NUMBER_INT);
+		$CharacterDob = filter_var($CharacterDob, FILTER_SANITIZE_STRING);
+		$CharacterGender = filter_var($CharacterGender, FILTER_SANITIZE_STRING);
+		$CharacterRace = filter_var($CharacterRace, FILTER_SANITIZE_STRING);
+		$CharacterPersonality = filter_var($CharacterPersonality, FILTER_SANITIZE_STRING);
+		$CharacterAppearance = filter_var($CharacterAppearance, FILTER_SANITIZE_STRING);
+		$CharacterSpecies = filter_var($CharacterSpecies, FILTER_SANITIZE_STRING);
+		
+		//php variable called sql that stores the SQL insert query.
+		//INSERTS INTO the locations table (Column1, Column2) the values (our previous defined variables from above)
+		$sql = "INSERT INTO characters (CharacterName,CharacterAge,CharacterDob,CharacterGender,CharacterRace,CharacterPersonality,CharacterAppearance,CharacterSpecies) VALUES ('$CharacterName','$CharacterAge','$CharacterDob','$CharacterGender','$CharacterRace','$CharacterPersonality','$CharacterAppearance','$CharacterSpecies')";
+
+		//check if the connection wasn't made and/or the the query wasn't run properly
+		if (!mysqli_query($con,$sql)) 
+		{
+			echo 'ERROR, Data not Inserted';
+		}
+
+		else
+		{
+			echo 'Data Inserted';
+		}
+
+		//refresh the index page after 2 seconds.
+		header("refresh:2; url=index.html");
+
+		}
+
+	else{
+		echo 'You missed a required field';
+		header("refresh:1; url=character.html");
 	}
-
-	else
-	{
-		echo 'Data Inserted';
-	}
-
-	//refresh the index page after 2 seconds.
-	header("refresh:2; url=index.html");
+	
+	/*
+	$CharacterName = mysqli_real_escape_string($_POST['characterName']);
+	$CharacterAge = intval($_POST['CharacterAge']);
+	$CharacterDob = mysqli_real_escape_string($_POST['characterDob']);
+	$CharacterGender = mysqli_real_escape_string($_POST['CharacterGender']);
+	$CharacterRace = mysqli_real_escape_string($_POST['characterRace']);
+	$CharacterPersonality = mysqli_real_escape_string($_POST['CharacterPersonality']);
+	$CharacterAppearance = mysqli_real_escape_string($_POST['characterAppearance']);
+	$CharacterSpecies = mysqli_real_escape_string($_POST['CharacterSpecies']);
+	*/
 ?>
