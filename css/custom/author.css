@@ -7,9 +7,28 @@ h1{
 	padding: 15px;
 	background-color: #bdbdbd;
 }
+
+.navbar-brand{
+	font-family: 'Roboto', sans-serif;
+	width: 20%;
+	height: 40%;
+}
+
+#lanternLogo{
+	width: 35%;
+	height: 35%;
+	padding: 10px;
+	margin-left: 20px;
+}
+
+.navbar-brand b {
+	margin-left: 20px;
+	font-size: 25px;
+}
+
 /* Body */
 .container-fluid {
-	background-color: #bdbdbd;
+	background-color: #aeaeae;
 	width: 100%;
 	height: 100%;
 }
@@ -23,7 +42,6 @@ h1{
 }
 
 #wordPad {
-	border: solid;
 	height: 100%;
 	font-size: 12px;
 }
@@ -35,11 +53,11 @@ h1{
 }
 
 #writingPage {
-	border: solid;
+	
 }
 
 #mapPage {
-	border: solid;
+	
 }
 
 #writingArea {

@@ -3,6 +3,24 @@ body{
 	font-family: "Verdana";
 }
 
+.navbar-brand{
+	font-family: 'Roboto', sans-serif;
+	width: 20%;
+	height: 40%;
+}
+
+#lanternLogo{
+	width: 35%;
+	height: 35%;
+	padding: 10px;
+	margin-left: 20px;
+}
+
+.navbar-brand b {
+	margin-left: 20px;
+	font-size: 25px;
+}
+
 /* Body */
 .container-fluid {
 	background-color: #aeaeae;
