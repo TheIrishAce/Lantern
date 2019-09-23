@@ -47,9 +47,9 @@ h1{
 }
 
 #footer {
-  	background-color: #aeaeae;
-  	position: absolute;
-  	bottom: 0;
+	background-color: #aeaeae;
+  	position: block;
+ 	bottom: 0;
   	width: 100%;
   	height: 1.5rem;            /* Footer height */
   	text-align: center;
