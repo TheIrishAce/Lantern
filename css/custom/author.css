@@ -52,16 +52,12 @@ h1{
 	font-size: 12px;
 }
 
-#writingPage {
-	
-}
-
-#mapPage {
-	
-}
-
 #writingArea {
 	width: 100%;
+}
+
+#text-linking-container{
+	margin-top:	25px;
 }
 
 #footer {
