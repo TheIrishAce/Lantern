@@ -31,14 +31,13 @@
 
 		//Sanitized variables from above, each variable uses different filters depending on variable type eg: String or Int.
 		$LocationName = filter_var($LocationName, FILTER_SANITIZE_STRING);
-		$LocationType = filter_var($LocationType, FILTER_SANITIZE_NUMBER_INT);
+		$LocationType = filter_var($LocationType, FILTER_SANITIZE_STRING);
 		$LocationDescription = filter_var($LocationDescription, FILTER_SANITIZE_STRING);
-		$CharacterGender = filter_var($CharacterGender, FILTER_SANITIZE_STRING);
 		
 		
 		//php variable called sql that stores the SQL insert query.
 		//INSERTS INTO the locations table (Column1, Column2) the values (our previous defined variables from above)
-		$sql = "INSERT INTO locations (locationName,locationType,locationDescription) VALUES ('$CharacterName','$locationName','$locationType','$locationDescription)";
+		$sql = "INSERT INTO locations (LocationName,LocationType,LocationDescription) VALUES ('$LocationName','$LocationType','$LocationDescription')";
 
 		//check if the connection wasn't made and/or the the query wasn't run properly
 		if (!mysqli_query($con,$sql)) 
@@ -52,7 +51,7 @@
 		}
 
 		//refresh the index page after 2 seconds.
-		header("refresh:2; url=index.html");
+		header("refresh:2; url=location.html");
 
 		}
 
