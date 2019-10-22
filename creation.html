@@ -66,70 +66,70 @@
               </div>
             </div>
           </div>
-          <div class="card">
-            <div class="card-header" id="headingTwo">
-              <h5 class="mb-0">
+             <div class="card">
+        <div class="card-header" id="headingTwo">
+            <h5 class="mb-0">
                 <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                  Location Creation
+                    Location Creation
                 </button>
-              </h5>
-            </div>
-            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-              <div class="card-body form-group">
-                <form id="locationInputBoxes" action="lib/php/insertLocation.php" method="post">
-                  <div class="form-group">
-                    <em>Location Name :</em> <input type="text" name="locationName">
-          					<br/>
-          					<em>Location Type :</em>
-          					<select name="locationType">
-          					  <option value="kingdom">Kingdom</option>
-          					  <option value="empire">Empire</option>
-          					  <option value="city">City</option>
-          					  <option value="building">Building</option>
-          					</select>
-          					<br/>
-          					<em>Location Description :</em> <input type="text" name="locationDescription">
-          					<br/>
-          					<input type="submit" value="Create Location">
-                  </div>
-        				</form>
-              </div>
-            </div>
-          </div>
-          <div class="card">
-            <div class="card-header" id="headingThree">
-              <h5 class="mb-0">
-                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                  Event Creation
-                </button>
-              </h5>
-            </div>
-            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-              <div class="card-body">
-                <form id="eventInputBoxes" action = "lib/php/insertEvent.php" method ="post">
-        					<em>Event Name: </em><input type="text" name="eventName">
-        					<br/>
-        					<em>Event Date: </em><input type="Date" name="eventDate">
-        					<br/>
-        					<em>Event Characters: </em><input type="text" name="eventLinkCharacter">
-        					<br/>
-        					<em>Event Kingdoms: </em><input type="text" name="eventLinkKindgom">
-        					<br/>
-        					<em>Event Description :</em> <textarea type="text" name="eventDescription"></textarea>
-        					<br/>
-        					<input type="submit" name="Create Event" value ="Create Event">
-        				</form>
-              </div>
-            </div>
-          </div>
+            </h5>
         </div>
-      </div>
-			<div id="bottomColumn" class="col-md-1">
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+            <div class="card-body form-group">
+                <form id="locationInputBoxes" action="lib/php/insertLocation.php" method="post">
+                    <div class="form-group">
+                        <em>Location Name :</em> <input type="text" name="locationName">
+                        <br/>
+                        <em>Location Type :</em>
+                        <select name="locationType">
+                            <option value="kingdom">Kingdom</option>
+                            <option value="empire">Empire</option>
+                            <option value="city">City</option>
+                            <option value="building">Building</option>
+                        </select>
+                        <br/>
+                        <em>Location Description :</em> <input type="text" name="locationDescription">
+                        <br/>
+                        <input type="submit" value="Create Location">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header" id="headingThree">
+            <h5 class="mb-0">
+                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    Event Creation
+                </button>
+            </h5>
+        </div>
+        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+            <div class="card-body">
+                <form id="eventInputBoxes" action = "lib/php/insertEvent.php" method ="post">
+                    <em>Event Name: </em><input type="text" name="eventName">
+                    <br/>
+                    <em>Event Date: </em><input type="Date" name="eventDate">
+                    <br/>
+                    <em>Event Characters: </em><input type="text" name="eventLinkCharacter">
+                    <br/>
+                    <em>Event Kingdoms: </em><input type="text" name="eventLinkKingdom">
+                    <br/>
+                    <em>Event Description :</em> <textarea type="text" name="eventDescription"></textarea>
+                    <br/>
+                    <input type="submit" name="Create Event" value ="Create Event">
+                </form>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+    <div id="bottomColumn" class="col-md-1">
 
-			</div>
-		</div>
+    </div>
+    </div>
 
-	</div>
+    </div>
 
 </body>
 <footer id="footer">
