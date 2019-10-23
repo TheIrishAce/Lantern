@@ -31,39 +31,40 @@
   </script>
     <div class="container-fluid">
       <div id="navIncludedContent"></div>
-		<div id="topRow" class="row">
-			<div class="col-lg-1"></div>
-			<div id="topRowParagraph" class="col-lg-5">
-				<p>	Lantern is an advanced story manager with book authors in mind.
-				<br/>Lantern will allow our users to create characters, locations and events and link those as you type.
-				<br/>This helps prevent plot holes and other problems authors potentially face and best of all stops the nightmare that is scraps of paper.
+    <div id="index-banner" class="position-relative overflow-hidden p-3 p-md-5 text-center bg-light">
+      <div class="banner-images">
+        <img class="book-img-01 shadow-sm d-none d-md-block shadow p-3 mb-5 bg-lightgrey rounded" src="images/sample_script.jpg">
+        <img class="book-img-02 shadow-sm d-none d-md-block shadow p-3 mb-5 bg-lightgrey rounded" src="images/books.jpg">
+      </div>
+      <div class="col-md-5 p-lg-5 mx-auto my-5">
+        <h1>Lantern</h1>
+        <h5>The advanced story creator.<h5>
+      </div>
+    </div>
+    <div id="topRow" class="row">
+       <div class="col-lg-4 position-relative overflow-hidden p-3 p-md-5 text-center bg-light">
+          <img class="rounded-circle" src="images/register.png" height="140px" width="140px">
+          <rect width="100%" height="100%" fill="#777"></rect>
+          <h2>Register Now</h2>
+          <p>Want to try Lantern? <br> Make sure to make a free account and give it a try.</p>
+          <p><a class="btn btn-secondary" href="#" role="button">View details »</a></p>
+        </div>
 
-				</p>
-			</div>
-			<div class="col-lg-5">
-				<img id="topRowImage" src="images/books.jpg" class="img-fluid rounded" alt="Responsive image">
-			</div>
-			<div class="col-lg-1"></div>
-		</div>
-		<div id="midRow" class="row">
-			<div class="col-lg-1"></div>
-			<div class="col-lg-5">
-				<img id="midRowImage" src="images/placeholder-image.png" class="img-fluid rounded" alt="Responsive image">
-			</div>
-			<div id="midRowParagraph" class="col-lg-5">
-				<p>	Placeholder Paragraph.</p>
-			</div>
-			<div class="col-lg-1"></div>
-		</div>
-		<div id="bottomRow" class="row">
-			<div class="col-lg-1"></div>
-			<div id="bottomRowParagraph" class="col-lg-5">
-				<p>	Placeholder Paragraph.</p>
-			</div>
-			<div class="col-lg-5">
-				<img id="bottomRowImage" src="images/placeholder-image.png" class="img-fluid rounded" alt="Responsive image">
-			</div>
-			<div class="col-lg-1"></div>
+        <div class="col-lg-4 position-relative overflow-hidden p-3 p-md-5 text-center bg-light">
+           <img class="rounded-circle" src="images/author.jpg" height="140px" width="140px">
+           <rect width="100%" height="100%" fill="#777"></rect>
+           <h2>What is Lantern?</h2>
+           <p>Lantern is an advanced story creator with authors in mind. <br> Lantern allows our users to create characters, locations and events and link those as you type. This by design helps mitigate plot holes and other problems authors potentially face and best of all stops the nightmare that is scraps of paper and note taking.</p>
+           <p><a class="btn btn-secondary" href="#" role="button">View details »</a></p>
+        </div>
+
+        <div class="col-lg-4 position-relative overflow-hidden p-3 p-md-5 text-center bg-light">
+           <img class="rounded-circle" src="images/books.jpg" height="140px" width="140px">
+           <rect width="100%" height="100%" fill="#777"></rect>
+           <h2>Have any questions?</h2>
+           <p>Feel free to email us and we'll get back to you as soon as possible.</p>
+           <p><a class="btn btn-secondary" href="#" role="button">View details »</a></p>
+         </div>
 		</div>
 	</div>
 </body>
