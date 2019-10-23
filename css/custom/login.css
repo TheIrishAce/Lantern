@@ -36,7 +36,9 @@ button:hover {
   background-color: #f44336;
 }
 
-
+.midColumn{
+  padding-top: 15px;
+}
 
 
 /* Add padding to containers */
