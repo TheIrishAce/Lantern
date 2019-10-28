@@ -25,10 +25,10 @@
 
 		//php variable called sql that stores the SQL insert query.
 		//INSERTS INTO the locations table (Column1, Column2) the values (our previous defined variables from above)
-		$sql = "INSERT INTO characters (CharacterName,CharacterAge,CharacterDob,CharacterGender,CharacterRace,CharacterPersonality,CharacterAppearance,CharacterSpecies) VALUES ('$CharacterName','$CharacterAge','$CharacterDob','$CharacterGender','$CharacterRace','$CharacterPersonality','$CharacterAppearance','$CharacterSpecies')";
+		$sql = "INSERT INTO story_character (CharacterName,CharacterAge,CharacterDob,CharacterGender,CharacterRace,CharacterPersonality,CharacterAppearance,CharacterSpecies) VALUES ('$CharacterName','$CharacterAge','$CharacterDob','$CharacterGender','$CharacterRace','$CharacterPersonality','$CharacterAppearance','$CharacterSpecies')";
 
 		//using config.php check if the connection wasn't made and/or the the query wasn't run properly
-		if (!mysqli_query($con,$sql))
+		if (!mysqli_query($conn,$sql))
 		{
 			echo 'ERROR, Data not Inserted';
 		}
@@ -39,13 +39,13 @@
 		}
 
 		//refresh the index page after 2 seconds.
-		header("refresh:2; url=index.html");
+		header("refresh:2; url=../../index.php");
 
-		}
+	}
 
 	else{
 		echo 'You missed a required field';
-		header("refresh:1; url=character.html");
+		header("refresh:1; url=../../creation.html");
 	}
 
 	/*

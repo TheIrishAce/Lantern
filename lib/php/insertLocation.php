@@ -16,10 +16,10 @@
 
 		//php variable called sql that stores the SQL insert query.
 		//INSERTS INTO the locations table (Column1, Column2) the values (our previous defined variables from above)
-		$sql = "INSERT INTO locations (LocationName,LocationType,LocationDescription) VALUES ('$LocationName','$LocationType','$LocationDescription')";
+		$sql = "INSERT INTO story_location (LocationName,LocationType,LocationDescription) VALUES ('$LocationName','$LocationType','$LocationDescription')";
 
 		//using config.php check if the connection wasn't made and/or the the query wasn't run properly
-		if (!mysqli_query($con,$sql))
+		if (!mysqli_query($conn,$sql))
 		{
 			echo 'ERROR, Data not Inserted';
 		}
@@ -30,13 +30,13 @@
 		}
 
 		//refresh the index page after 2 seconds.
-		header("refresh:2; url=location.html");
+		header("refresh:2; url=../../index.php");
 
 		}
 
 	else{
 		echo 'You missed a required field';
-		header("refresh:1; url=character.html");
+		header("refresh:1; url=../../creation.html");
 	}
 
 
