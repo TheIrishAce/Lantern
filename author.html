@@ -24,6 +24,7 @@
 </head>
 
 <body>
+  <script type="text/javascript" src="js/custom/authorFunctionality.js"></script>
   <script>
     $(function(){
       $("#navIncludedContent").load("navbar.html");
@@ -36,12 +37,12 @@
   	<div id="text-linking-container" class="row">
   		<div class="col-lg-1"></div>
   		<div id="wordPad" class="col-md-6">Typing Field
-  			<form action="lib/php/insertStory.php" method="post">
+  			<form method="post" action="lib/php/interactStory.php" onsubmit="return insertStory();">
 					<textarea type="text" id="writingArea" name="storyType" rows="20" cols="50" placeholder="Begin your story here..."></textarea>
 					<br>
-					<input type="submit" value="Save">
-          <input type="submit" value="Load">
-          <input type="submit" value="Delete">
+					<input type="submit" name="save" value="Save">
+          <input type="submit" name="load" value="Load">
+          <input type="submit" name="delete" value="Delete">
 			  </form>
   		</div>
   		<div id="refrences" class="col-md-4">Linking Area
