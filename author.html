@@ -37,12 +37,11 @@
   	<div id="text-linking-container" class="row">
   		<div class="col-lg-1"></div>
   		<div id="wordPad" class="col-md-6">Typing Field
-  			<form method="post" action="lib/php/interactStory.php" onsubmit="return insertStory();">
+  			<form method="post" action="lib/php/interactStory.php"> <!-- !!(insertStory() &  -->
 					<textarea type="text" id="writingArea" name="storyType" rows="20" cols="50" placeholder="Begin your story here..."></textarea>
 					<br>
-					<input type="submit" name="save" value="Save">
-          <input type="submit" name="load" value="Load">
-          <input type="submit" name="delete" value="Delete">
+          <button name="save" onclick="return insertStory()">Save</button>
+          <button name="load" onclick="return fetchStory()">Load</button>
 			  </form>
   		</div>
   		<div id="refrences" class="col-md-4">Linking Area
