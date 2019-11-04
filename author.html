@@ -32,27 +32,29 @@
   </script>
    <div class="container-fluid">
      <div id="navIncludedContent"></div>
-  	<div class="row">
-      <div class="col-lg-1"></div>
-  	<div id="text-linking-container" class="row">
-  		<div class="col-lg-1"></div>
-  		<div id="wordPad" class="col-md-6">Typing Field
-  			<form method="post" action="lib/php/interactStory.php"> <!-- !!(insertStory() &  -->
-					<textarea type="text" id="writingArea" name="storyType" rows="20" cols="50" placeholder="Begin your story here..."></textarea>
-					<br>
-          <button name="save" onclick="return insertStory()">Save</button>
-          <button name="load" onclick="return fetchStory()">Load</button>
-			  </form>
-  		</div>
-  		<div id="refrences" class="col-md-4">Linking Area
-
-  		</div>
-  	</div>
-  	<div class="col-lg-1"></div>
-  </div>
+  	 <div class="row">
+       <div id="text-linking-container" class="row">
+         <div class="col-lg-1">
+           <div id="authorButtons">
+             <button type="button" name="save" class="btn btn-success btn-block" onclick="return insertStory()">Save</button>
+             <button type="button" name="load" class="btn btn-primary btn-block" onclick="return fetchStory()">Load</button>
+           </div>
+         </div>
+  		     <div id="wordPad" class="col-md-6">Typing Field
+             <form method="post" action="lib/php/interactStory.php"> <!-- !!(insertStory() &  -->
+               <textarea type="text" id="writingArea" name="storyType" rows="20" cols="50" placeholder="Begin your story here...">
+               </textarea>
+               <br>
+             </form>
+  		     </div>
+           <div id="refrences" class="col-md-4">Linking Area</div>
+         </div>
+         <div class="col-lg-1"></div>
+       </div>
+     </div>
 </body>
 
-<footer id="footer">
-  &copy; Lantern 2019
-</footer>
+  <footer id="footer">
+    &copy; Lantern 2019
+  </footer>
 </html>

@@ -3,6 +3,10 @@ body{
 	font-family: "Verdana";
 }
 
+.container-fluid {
+	background-color: #f5f5f5;
+}
+
 .navbar-brand{
   font-family: 'Roboto', sans-serif;
   width: 20%;
@@ -95,7 +99,7 @@ body{
 }
 
 #footer {
-  background-color: #aeaeae;
+  background-color: #f5f5f5;
   position: block;
   bottom: 0;
   width: 100%;

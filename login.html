@@ -16,7 +16,7 @@
   <!-- Custom CSS -->
   <link rel="stylesheet" type="text/css" href="css/custom/login.css">
 
-	<!-- Google Fonts -->
+  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
 
   <title>Lantern</title>
@@ -24,44 +24,33 @@
 </head>
 
 <body>
-    <script>
-        $(function(){
-        $("#navIncludedContent").load("navbar.html");
-        });
-    </script>
-    <div id="navIncludedContent"></div>
-    <div class="container-fluid">
-        <div class="row">
-         <div id="topColumn" class="col-md-1"></div>
-         <div id="midColumn" class="col-md-10">
-             <form action="/action_page.php" method="post">
+  <script>
+  $(function(){
+    $("#navIncludedContent").load("navbar.html");
+  });
+  </script>
+  <div id="navIncludedContent"></div>
+  <div class="container-fluid">
+    <div class="row">
+      <div id="topColumn" class="col-md-1"></div>
+      <div id="midColumn" class="col-md-10">
+        <form action="/action_page.php" method="post">
+          <div class="container">
+            <label for="uname"><b>Username</b></label>
+            <input type="text" placeholder="Enter Username" name="uname" required>
+            <label for="psw"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="psw" required>
+            <button type="submit">Login</button>
+            <label>
+              <input type="checkbox" checked="checked" name="remember"> Remember me
+            </label>
+          </div>
+          <div class="" style=>
+            <span class="psw">Forgot <a href="#">password?</a></span>
+          </div>
+        </form>
+  </body>
 
-
-  <div class="container">
-    <label for="uname"><b>Username</b></label>
-    <input type="text" placeholder="Enter Username" name="uname" required>
-
-    <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" required>
-
-    <button type="submit">Login</button>
-    <label>
-      <input type="checkbox" checked="checked" name="remember"> Remember me
-    </label>
-  </div>
-
-  <div class="" style=>
-
-    <span class="psw">Forgot <a href="#">password?</a></span>
-  </div>
-</form>
-
-
-
-
-
-</body>
-
-<footer id="footer">
+  <footer id="footer">
     &copy; Lantern 2019
-</footer>
+  </footer>
