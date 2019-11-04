@@ -19,7 +19,7 @@
       }
     }
   }
-  
+
   elseif (isset($_POST['load']))
   {
     include 'config.php';

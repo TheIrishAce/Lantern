@@ -50,19 +50,24 @@ function fetchStory() {
       url: 'lib/php/interactStory.php',
       type: 'POST',
       async: false,
+      cache: false,
       data: {
         load: 1,
         storyType:userStory
       },
       success: function(response){
         //console.log(response);
+
         var obj = JSON.parse(response);
-        //console.log(obj);
+        console.log(obj);
         if (obj.exit =="success") {
-          //document.getElementById('writingArea').innerHTML = "";
-          document.getElementById('writingArea').innerHTML = obj.UserStory.UserStory;
+          //alert(obj.exit);
+          //var test = $("#writingArea").val();
+          $("#writingArea").val('');
+          $("#writingArea").val(obj.UserStory.UserStory);
           //alert(obj.UserStory.UserStory);
-          //$("writingArea").html(obj);
+          //document.getElementById('writingArea').innerHTML = "";
+          //document.getElementById('writingArea').innerHTML = obj.UserStory.UserStory;
           alert ("Story Loaded");
         }
         else
