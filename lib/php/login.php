@@ -1,29 +1,88 @@
 <?php
-   include("config.php");
-   session_start();
-   
-   if($_SERVER["REQUEST_METHOD"] == "POST") {
-      // username and password sent from form 
-      
-      $AccountUsername = mysqli_real_escape_string($db,$_POST['uname']);
-      $AccountPassword = mysqli_real_escape_string($db,$_POST['psw']); 
-      
-      $sql = "SELECT AccountId FROM site_account WHERE uname = '$AccountUsername' and psw = '$AccountPassword'";
-      $result = mysqli_query($db,$sql);
-      $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
-      $active = $row['active'];
-      
-      $count = mysqli_num_rows($result);
-      
-      // If result matched $myusername and $mypassword, table row must be 1 row
-		
-      if($count == 1) {
-         session_register("AccountUsername");
-         $_SESSION['login_user'] = $AccountUsername;
-         
-         header("location: author.html");
-      }else {
-         $error = "Your Login Name or Password is invalid";
-      }
-   }
-?>
+// Initialize the session
+session_start();
+ 
+// Check if the user is already logged in, if yes then redirect him to welcome page
+if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
+    header("location: author.html");
+    exit;
+}
+ 
+// Include config file
+require_once "config.php";
+ 
+// Define variables and initialize with empty values
+$AccountUsername = $AccountPassword = "";
+$username_err = $password_err = "";
+ 
+// Processing form data when form is submitted
+if($_SERVER["REQUEST_METHOD"] == "POST"){
+ 
+    // Check if username is empty
+    if(empty(trim($_POST["AccountUsername"]))){
+        $username_err = "Please enter username.";
+    } else{
+        $AccountUsername = trim($_POST["AccountUsername"]);
+    }
+    
+    // Check if password is empty
+    if(empty(trim($_POST["AccountPassword"]))){
+        $password_err = "Please enter your password.";
+    } else{
+        $AccountPassword = trim($_POST["AccountPassword"]);
+    }
+    
+    // Validate credentials
+    if(empty($username_err) && empty($password_err)){
+        // Prepare a select statement
+        $sql = "SELECT AccountId, AccountUsername, AccountPassword FROM site_account WHERE AccountUsername = ?";
+        
+        if($stmt = mysqli_prepare($link, $sql)){
+            // Bind variables to the prepared statement as parameters
+            mysqli_stmt_bind_param($stmt, "s", $param_username);
+            
+            // Set parameters
+            $param_username = $AccountUsername;
+            
+            // Attempt to execute the prepared statement
+            if(mysqli_stmt_execute($stmt)){
+                // Store result
+                mysqli_stmt_store_result($stmt);
+                
+                // Check if username exists, if yes then verify password
+                if(mysqli_stmt_num_rows($stmt) == 1){                    
+                    // Bind result variables
+                    mysqli_stmt_bind_result($stmt, $AccountId, $AccountUsername, $hashed_password);
+                    if(mysqli_stmt_fetch($stmt)){
+                        if(password_verify($AccountPassword, $hashed_password)){
+                            // Password is correct, so start a new session
+                            session_start();
+                            
+                            // Store data in session variables
+                            $_SESSION["loggedin"] = true;
+                            $_SESSION["AccountId"] = $AccountId;
+                            $_SESSION["AccountUsername"] = $AccountUsername;                            
+                            
+                            // Redirect user to welcome page
+                            header("location: author.html");
+                        } else{
+                            // Display an error message if password is not valid
+                            $password_err = "The password you entered was not valid.";
+                        }
+                    }
+                } else{
+                    // Display an error message if username doesn't exist
+                    $username_err = "No account found with that username.";
+                }
+            } else{
+                echo "Oops! Something went wrong. Please try again later.";
+            }
+        }
+        
+        // Close statement
+        mysqli_stmt_close($stmt);
+    }
+    
+    // Close connection
+    mysqli_close($link);
+}

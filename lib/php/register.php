@@ -1,7 +1,7 @@
 <?php
     include 'config.php';
-    $AccountUsername = $_POST['uname'];
-    $AccountPassword = $_POST['psw'];
+    $AccountUsername = $_POST['AccountUsername'];
+    $AccountPassword = $_POST['AccountPassword'];
    // $EventDescription = $_POST['eventDescription'];
 
     if(!empty($AccountUsername) && !empty($AccountPassword) ){
