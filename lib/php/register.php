@@ -1,16 +1,16 @@
 <?php
     include 'config.php';
-    $UserName = $_POST['uname'];
-    $Password = $_POST['psw'];
+    $AccountUsername = $_POST['uname'];
+    $AccountPassword = $_POST['psw'];
    // $EventDescription = $_POST['eventDescription'];
 
-    if(!empty($UserName) && !empty($Password) ){
+    if(!empty($AccountUsername) && !empty($AccountPassword) ){
 
-      $UserName = filter_var($UserName, FILTER_SANITIZE_STRING);
-      $Password = filter_var($Password, FILTER_SANITIZE_STRING);
+      $AccountUsername = filter_var($AccountUsername, FILTER_SANITIZE_STRING);
+      $AccountPassword = filter_var($AccountPassword, FILTER_SANITIZE_STRING);
       
 
-      $sql = "INSERT INTO site_account (UserName,Password) VALUES ('$UserName', '$Password')";
+      $sql = "INSERT INTO site_account (AccountUsername,AccountPassword) VALUES ('$AccountUsername', '$AccountPassword')";
 
       if(!mysqli_query($conn,$sql))
       {
