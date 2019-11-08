@@ -21,7 +21,7 @@
          session_register("AccountUsername");
          $_SESSION['login_user'] = $AccountUsername;
          
-         header("location: welcome.php");
+         header("location: author.html");
       }else {
          $error = "Your Login Name or Password is invalid";
       }
