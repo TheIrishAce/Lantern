@@ -28,5 +28,5 @@
 
   	else{
   		echo 'You missed a required field';
-  		header("refresh:1; url=../../login.html");
+  		header("refresh:1; url=../../register.html");
   	}
