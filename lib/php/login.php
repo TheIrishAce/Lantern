@@ -16,7 +16,7 @@ if(isset($_POST['but_submit'])){
 
         if($count > 0){
             $_SESSION['AccountUsername'] = $AccountUsername;
-            header('Location: author.html');
+            header('Location: home.php');
         }else{
             echo "Invalid username and password";
         }
