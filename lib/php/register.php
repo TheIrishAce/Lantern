@@ -6,13 +6,13 @@
       $ConfirmPassword = $_POST['ConfirmPassword'];
 
       if($AccountPassword==$ConfirmPassword){
-          $query = "selet * from site_account WHERE AccountUsername='$AccountUsername '";
-          $query_run =mysql_query($con,$query);
+          $query = "select * from site_account WHERE AccountUsername='$AccountUsername '";
+          $query_run =mysqli_query($conn,$query);
 
-          if(mysql_num_rows($query_run)>0){
+          if(mysqli_num_rows($query_run)>0){
             echo 'User already exists';
           }
-          {
+          else{
             $sql = "INSERT INTO site_account (AccountUsername,AccountPassword) VALUES ('$AccountUsername', '$AccountPassword')";
 
             if(!mysqli_query($conn,$sql))
