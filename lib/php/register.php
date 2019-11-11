@@ -8,13 +8,12 @@
       if($AccountPassword==$ConfirmPassword){
           $query = "select * from site_account WHERE AccountUsername='$AccountUsername '";
           $query_run =mysqli_query($conn,$query);
-
           if(mysqli_num_rows($query_run)>0){
             echo 'User already exists';
           }
           else{
             $sql = "INSERT INTO site_account (AccountUsername,AccountPassword) VALUES ('$AccountUsername', '$AccountPassword')";
-
+            }
             if(!mysqli_query($conn,$sql))
             {
               echo 'Error, Data not inserted';
@@ -26,7 +25,7 @@
           }
       }
 
-    }
+    
     
 
     if(!empty($AccountUsername) && !empty($AccountPassword) ){
