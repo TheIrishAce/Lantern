@@ -1,6 +1,6 @@
 function existingStoryCharacterNLP()
 {
-  alert("hello");
+  //alert("hello");
   var story = $("#writingArea").val();
   var storyInput = nlp(story);
 
@@ -12,14 +12,14 @@ function existingStoryCharacterNLP()
   var lNames = storyInput.people().lastNames().data();
   var counter=0;
   fNames.forEach(function(nestedArray) {
-    console.log(counter);
+    //console.log(counter);
     fName = fNames[counter].text;
     lName = lNames[counter].text;
     combinedNames[counter] = fName + lName;
-    console.log(combinedNames[counter]);
+    //console.log(combinedNames[counter]);
     counter++
   });
-  console.log(combinedNames);
+  //console.log(combinedNames);
   counter=1;
   combinedNames.forEach(function(nestedArray){
     $("#refrences").append("<div id='counter' class='container-fluid'></div>");
