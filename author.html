@@ -19,12 +19,16 @@
 	<!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
 
+  <!-- Compromise NLP interation -->
+  <script src="https://unpkg.com/compromise@latest/builds/compromise.min.js"></script>
+  <script type="text/javascript" src="js/custom/authorFunctionality.js"></script>
   <title>Lantern</title>
   <link rel="icon" href="images/Lantern.png">
 </head>
 
 <body>
-  <script type="text/javascript" src="js/custom/authorFunctionality.js"></script>
+
+
   <script>
     $(function(){
       $("#navIncludedContent").load("navbar.html");
@@ -36,7 +40,13 @@
          <div class="col-lg-1 text-center">
            <div id="authorButtons">
              <button type="button" name="save" class="btn btn-success btn-block" onclick="return insertStory()">Save</button>
-             <button type="button" name="load" class="btn btn-primary btn-block" onclick="return fetchStory()">Load</button>
+             <button type="button" id="loadStory" name="load" class="btn btn-primary btn-block" onclick="return fetchStory()">Load</button>
+             <script type="text/javascript" src="js/custom/authorNLP.js"></script>
+             <script type="text/javascript">
+             $("#loadStory").click(function(){
+               existingStoryCharacterNLP();
+             });
+             </script>
            </div>
          </div>
   		     <div id="wordPad" class="col-md-6">Typing Field
