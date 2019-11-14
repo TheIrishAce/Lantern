@@ -11,12 +11,16 @@ function existingStoryCharacterNLP()
 
   var fNames = storyInput.people().firstNames().data();
   var lNames = storyInput.people().lastNames().data();
+  //console.log(fNames);
+  //console.log(lNames);
   var counter=0;
   fNames.forEach(function(nestedArray) {
     //console.log(counter);
-    fName = fNames[counter].text;
+    tempFName = fNames[counter].text;
+    fName = tempFName.replace(/\s/g, '');
     lName = lNames[counter].text;
     combinedNames[counter] = fName+lName;
+    //console.log(combinedNames[counter]);
     //console.log(combinedNames[counter]);
     counter++
   });
