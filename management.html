@@ -18,7 +18,7 @@
 
 	<!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
-
+    <script type="text/javascript" src="js/custom/managementFunctionality.js"></script>
   <title>Lantern</title>
   <link rel="icon" href="images/Lantern.png">
 </head>
@@ -46,9 +46,10 @@
                          <div class ="card-body">
                              <form id="characterInputBoxes" action ="lib/php/insertCharacter.php"  method="post">
 
-                                 <em>Search Character : </em> <input type="text" name="searchCharacter">
+                                 <em>Search Character : </em> <input type="text" id="searchCharacter" name="searchCharacter">
+                                 <button type="button" name="SearchCharacterButton" class="btn btn-success btn-block" onclick="return searchManagement()">Save</button>
                                  <br/>
-                                 <em>Character Name :</em> <input type="text" name="characterName">
+                                 <em>Character Name :</em> <input id="characterName" type="text" name="characterName">
                                  <br/>
                                  <em>Character Age :</em> <input type="number" name="characterAge">
                                  <br/>
@@ -79,8 +80,8 @@
                          <div class="card-body form-group">
                              <form id="locationInputBoxes" action="lib/php/insertLocation.php" method="post">
                                  <div class="form-group">
-
                                      <em>Search Location: </em><input type ="text" name = searchLocation>
+                                     <button id="searchBTN"  name="SearchL" class="btn btn-success" onclick="return insertStory()">Search</button>
                                      <br/>
                                      <em>Location Name :</em> <input type="text" name="locationName">
                                      <br/>
@@ -109,6 +110,9 @@
                      <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
                          <div class="card-body">
                              <form id="eventInputBoxes" action = "lib/php/insertEvent.php" method ="post">
+                                 <em>Search Events: </em><input type="text" name="searchEvent">
+                                 <button id ="searchBTN" type="button" name="SearchE" class="btn btn-success" onclick="return insertStory()">Search</button>
+                                 <br/>
                                  <em>Event Name: </em><input type="text" name="eventName">
                                  <br/>
                                  <em>Event Date: </em><input type="Date" name="eventDate">
