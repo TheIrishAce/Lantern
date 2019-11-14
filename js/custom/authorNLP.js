@@ -38,25 +38,30 @@ function existingStoryCharacterNLP()
     },
     success: function(response){
       console.log(response);
-      var obj = JSON.parse(response);
-      console.log(obj);
-      //for each here?
-      //alert(response);
-      if (obj.exit =="success") {
-        //alert ("Story Saved");
-        //window.location.replace("https://lanterngrape.herokuapp.com/author.html");
-        var foundCharactersReturned = [obj.foundCharacters.CharacterName];
-        console.log(obj);
-        counter=1;
-        foundCharactersReturned.forEach(function(nestedArray){
-          $("#refrences").append("<div id='counter' class='container-fluid'></div>");
-          $("#refrences").append("Character " + counter + " : " + foundCharactersReturned[counter-1]);
-          counter++;
-        });
-      }
-      else {
-        alert ("Error, something went wrong");
-      }
+      //try {
+          console.log(response);
+
+          var obj = JSON.parse(response);
+          console.log(obj);
+          if (obj.exit =="success") {
+            alert ("XXX");
+            var counter=0;
+            //window.location.replace("https://lanterngrape.herokuapp.com/author.html");
+            Object.keys(obj).forEach(function(key) {
+              console.log(Object.values(obj)[counter][0]);
+              var curCharacter = Object.values(obj)[counter][0];
+              $("#refrences").append("<div id='counter' class='container-fluid'></div>");
+              $("#refrences").append("Character " + (counter+1) + " : " + curCharacter.CharacterName);
+              console.log(key, obj[key]);
+              counter++;
+
+            });
+          }
+      //}
+
+      ///catch(err) {
+        //alert("No records found");
+      //}
     }
   });
 

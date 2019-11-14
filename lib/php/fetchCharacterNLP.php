@@ -21,6 +21,7 @@
         //echo $result;
         if ($result->num_rows > 0)
         {
+          $storyArray['exit'] = 'success';
           $storyArray[$counter] = $data;
 
           //echo "success";
@@ -28,8 +29,7 @@
   	    }
       }
       echo json_encode($storyArray);
-      exit();
-
     }
+    exit();
   }
 ?>
