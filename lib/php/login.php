@@ -33,7 +33,7 @@ if(isset($_POST['but_submit'])){
     else{
         $Invalid = "Incorrect Email or Password";
             echo "<script type='text/javascript'>alert('$Invalid');</script>";
-            echo("<meta http-equiv='refresh' content='1'>");
+            header("refresh:2; url=../../login.html");
     }
 
 }
