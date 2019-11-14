@@ -36,20 +36,28 @@ function searchManagement(){
             SearchCharacterButton: 1,
             searchCharacter:Character
         },
+        error: function (response) {
+          alert("Local error callback.");
+        },
         success: function(response){
-            console.log(Character);
-            console.log(response);
+          console.log(response);
+          try {
             var obj = JSON.parse(response);
-            if (obj.exit =="success"){
-                alert("Character Found");
-                //window.location.replace("https://lanterngrape.herokuapp.com/management.html");
-                console.log(obj);
-                $("#characterName").val('');
-                $("#characterName").val(obj.returnedCharacter.returnedCharacter);
+            if (obj.exit =="success")
+            {
+              console.log(Character);
+              console.log(response);
+              alert("Character Found");
+              //window.location.replace("https://lanterngrape.herokuapp.com/management.html");
+              console.log(obj);
+              $("#characterName").val('');
+              $("#characterName").val(obj.returnedCharacter.CharacterName);
             }
-            else{
-            alert("Error, Character not found!");
-            }
+          }
+
+          catch(err) {
+            alert("No character with the name " + Character + " found.");
+          }
         }
     });
     /*

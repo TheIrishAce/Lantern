@@ -5,10 +5,10 @@
     {
         include 'config.php';
         $SearchedCharacter = $conn->real_escape_string($_POST["searchCharacter"]);
-        if (!empty($searchedCharacter))
+        if (!empty($SearchedCharacter))
         {
             $SearchedCharacter = filter_var($SearchedCharacter, FILTER_SANITIZE_STRING);
-            $query = "SELECT StoryCharacter FROM story_character WHERE CharacterName = '$SearchedCharacter'";
+            $query = "SELECT CharacterName FROM story_character WHERE CharacterName = '$SearchedCharacter'";
             $result = $conn->query($query);
             $data = $result->fetch_assoc();
 
@@ -16,22 +16,16 @@
             {
                 $storyArray['exit'] = 'success';
                 $storyArray['returnedCharacter'] = $data;
+                //echo('success');
                 echo json_encode($storyArray);
-                //exit('success');
+
             }
 
             else
             {
                 exit('failed');
             }
-
             exit();
-
-
-
         }
-
     }
-
-
 ?>
