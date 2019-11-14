@@ -39,7 +39,8 @@ function existingStoryCharacterNLP()
     success: function(response){
       console.log(response);
       var obj = JSON.parse(response);
-      //console.log(obj);
+      console.log(obj);
+      //for each here?
       //alert(response);
       if (obj.exit =="success") {
         //alert ("Story Saved");

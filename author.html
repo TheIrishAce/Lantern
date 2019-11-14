@@ -48,13 +48,15 @@
              });
              </script>
              <script type="text/javascript">
-             /*
-             $(document).ready(function(){
-               $("#writingArea").keypress(function(){
+             var timeout;
+             $('#writingArea').keypress(function() {
+               if(timeout) {
+                 clearTimeout(timeout);
+                 timeout = null;
                  existingStoryCharacterNLP();
-               });
-             });
-             */
+               }
+               timeout = setTimeout(myFunction, 5000)
+             })
              </script>
            </div>
          </div>

@@ -5,32 +5,31 @@
     include 'config.php';
     //$NamesArray = $conn->real_escape_string($_POST["nameArrayData"]);
     $NamesArray = json_decode(stripslashes($_POST['nameArrayData']));
+    //print_r($NamesArray);
     //var_dump($NamesArray);
     //echo $NamesArray;
+    $counter = 0;
     if(!empty($NamesArray)){
       foreach ($NamesArray as $name) {
         //$name = filter_var($name, FILTER_SANITIZE_STRING);
-
+        $counter++;
         $query = "SELECT CharacterName FROM story_character WHERE CharacterName = '$name'";
         $result = $conn->query($query);
-        $data = $result->fetch_assoc();
+        $data = [$result->fetch_assoc()];
+        //print_r($data);
 
         //echo $result;
         if ($result->num_rows > 0)
         {
-          $storyArray['exit'] = 'success';
-          $storyArray['foundCharacters'] = $data;
-          echo json_encode($storyArray);
+          $storyArray[$counter] = $data;
+
           //echo "success";
           //exit('success');
   	    }
-
-        else
-        {
-          exit('failed');
-        }
-        exit();
       }
+      echo json_encode($storyArray);
+      exit();
+
     }
   }
 ?>
