@@ -2,6 +2,8 @@
 session_start();
 include "config.php";
 
+$AccountUsername = "bob";
+
 if(isset($_POST['but_submit'])){
 
     $AccountUsername = $_POST['AccountUsername'];
@@ -35,6 +37,8 @@ if(isset($_POST['but_submit'])){
             echo "<script type='text/javascript'>alert('$Invalid');</script>";
             header("refresh:2; url=../../login.html");
     }
+
+    exit();
 
 }
 ?>

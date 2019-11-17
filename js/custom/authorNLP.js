@@ -32,36 +32,39 @@ function existingStoryCharacterNLP()
     url: 'lib/php/fetchCharacterNLP.php',
     type: 'POST',
     async: false,
-    data: {
+    data:
+    {
       keyPressed: 1,
       nameArrayData:jsonString
     },
     success: function(response){
-      console.log(response);
-      //try {
-          console.log(response);
+      try
+      {
+        //console.log(response);
+        var obj = JSON.parse(response);
+        //console.log(obj);
+        if (obj.exit =="success")
+        {
+          //alert ("debug1");
+          var counter=0;
+          //window.location.replace("https://lanterngrape.herokuapp.com/author.html");
+          Object.keys(obj).forEach(function(key)
+          {
+            //console.log(Object.values(obj)[counter][0]);
+            var curCharacter = Object.values(obj)[counter][0];
+            $("#refrences").append("<div id='counter' class='container-fluid'></div>");
+            $("#refrences").append("Character " + (counter+1) + " : " + curCharacter.CharacterName);
+            //console.log(key, obj[key]);
+            counter++;
+          });
+        }
+      }
 
-          var obj = JSON.parse(response);
-          console.log(obj);
-          if (obj.exit =="success") {
-            alert ("XXX");
-            var counter=0;
-            //window.location.replace("https://lanterngrape.herokuapp.com/author.html");
-            Object.keys(obj).forEach(function(key) {
-              console.log(Object.values(obj)[counter][0]);
-              var curCharacter = Object.values(obj)[counter][0];
-              $("#refrences").append("<div id='counter' class='container-fluid'></div>");
-              $("#refrences").append("Character " + (counter+1) + " : " + curCharacter.CharacterName);
-              console.log(key, obj[key]);
-              counter++;
-
-            });
-          }
-      //}
-
-      ///catch(err) {
-        //alert("No records found");
-      //}
+      catch(err)
+      {
+        //alert("No character records for " + fNames + lNames + " found");
+        alert("One or more character records not found");
+      }
     }
   });
 

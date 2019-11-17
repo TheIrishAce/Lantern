@@ -1,18 +1,35 @@
 <?php
-  session_start();
+  //session_start();
 
   if (isset($_POST['save']))
   {
     include 'config.php';
+    include "login.php";
+
+    $AuthorId = $AccountUsername;
+
     $TextArea = $conn->real_escape_string($_POST["storyType"]);
     if(!empty($TextArea)){
       $TextArea = filter_var($TextArea, FILTER_SANITIZE_STRING);
-      $data = $conn->query("INSERT INTO user_story (UserStory) VALUES ('$TextArea')");
-      if ($data)
+
+      //Original insertion method. (Didn't link author)
+      //$data = $conn->query("INSERT INTO user_story (UserStory) VALUES ('$TextArea')");
+
+      //data1 used to insert story.
+      //data 2 used to set temp var with user of story just inserted.
+      //data 3 used to update the inserted story with the correct owner.
+      $data1 = $conn->query("INSERT INTO user_story (UserStory) VALUES ('$TextArea')");
+      $query1 = "SET @tempVar =(SELECT UserStoryId from user_story WHERE UserStory='$TextArea')";
+      $data2 = $conn->query($query1);
+      $data3 = $conn->query("UPDATE user_story SET user_story.UserStoryAuthor = '$AccountUsername' WHERE user_story.UserStoryId=@tempVar");
+
+      //success case if data1 - 3 excutes without errors.
+      if ($data1 && $data2 && $data3)
       {
           exit('success');
 	    }
 
+      //fail if any other case is true.
       else
       {
           exit('failed');
@@ -23,7 +40,17 @@
   elseif (isset($_POST['load']))
   {
     include 'config.php';
-    $AuthorId = 'Bobbie_Rossie';
+    include "login.php";
+
+    //AuthorId = current logged in account username
+
+    $AuthorId = $AccountUsername;
+    //var_dump($AccountUsername);
+
+    if ($AuthorId == "") {
+      exit('failed');
+    }
+
     $TextArea = $conn->real_escape_string($_POST["storyType"]);
     if(!empty($TextArea)){
       $TextArea = filter_var($TextArea, FILTER_SANITIZE_STRING);

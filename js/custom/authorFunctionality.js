@@ -21,7 +21,7 @@ function insertStory() {
         //alert(response);
         if (response="success") {
           alert ("Story Saved");
-          window.location.replace("https://lanterngrape.herokuapp.com/author.html");
+          //window.location.replace("https://lanterngrape.herokuapp.com/author.html");
         }
         else {
           alert ("Error, story not saved");

@@ -28,7 +28,10 @@
           //exit('success');
   	    }
       }
-      echo json_encode($storyArray);
+      if ($result->num_rows > 0)
+      {
+        echo json_encode($storyArray);
+      }
     }
     exit();
   }
