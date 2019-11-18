@@ -49,7 +49,7 @@ require "navbar.php";
                                  <br/>
                                  <em>Character Name :</em> <input id="characterName" type="text" name="characterName">
                                  <br/>
-                                 <em>Character Age :</em> <input type="number" name="characterAge">
+                                 <em>Character Age :</em> <input id="characterAge" type="number" name="characterAge">
                                  <br/>
                                  <em>Character DOB :</em> <input type="date" name="characterDob">
                                  <br/>

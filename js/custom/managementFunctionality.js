@@ -51,7 +51,9 @@ function searchManagement(){
               //window.location.replace("https://lanterngrape.herokuapp.com/management.html");
               console.log(obj);
               $("#characterName").val('');
-              $("#characterName").val(obj.returnedCharacter.CharacterName);
+              $("#characterName").val(obj.returnedCharacterName);
+              $("#characterAge").val('');
+              $("#characterAge").val(obj.returnedCharacterAge);
             }
           }
 
