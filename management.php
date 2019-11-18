@@ -1,3 +1,7 @@
+<?php
+//session_start();
+require "navbar.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,12 +28,6 @@
 </head>
 
 <body>
-    <script>
-        $(function(){
-        $("#navIncludedContent").load("navbar.html");
-        });
-    </script>
-
     <div class="container-fluid">
       <div id="navIncludedContent"></div>
         <div class="row">

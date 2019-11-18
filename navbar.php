@@ -1,3 +1,6 @@
+<?php
+  session_start();
+?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
@@ -17,6 +20,19 @@
 
   <title>Lantern</title>
   <link rel="icon" href="images/Lantern.png">
+
+  <div class="header-login">
+    <form action="lib/php/includes/login.inc.php" method="post">
+      <input type="text" name="AccountUsername" placeholder="Username/Email">
+      <input type="password" name="AccountPassword" placeholder="Password">
+      <button type="submit" name="login-submit">Login</button>
+    </form>
+    <a href="signup.php" class="header-signup">Signup</a>
+    <form action="lib/php/includes/logout.inc.php" method="post">
+      <button type="submit" name="logout-submit">Logout</button>
+    </form>
+  </div>
+
 </head>
 <body>
   <script>
@@ -34,22 +50,22 @@
           <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="author.html">Author</a>
+          <a class="nav-link" href="author.php">Author</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="creation.html">Creation</a>
+          <a class="nav-link" href="creation.php">Creation</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="management.html">Management</a>
+          <a class="nav-link" href="management.php">Management</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="contact.html">ContactUs</a>
+          <a class="nav-link" href="contact.php">ContactUs</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="login.html">Login</a>
+          <a class="nav-link" href="login.php">Login</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="register.html">Register</a>
+          <a class="nav-link" href="register.php">Register</a>
         </li>
         <!--
         <li class="nav-item dropdown">

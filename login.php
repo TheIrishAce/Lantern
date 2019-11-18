@@ -1,3 +1,7 @@
+<?php
+//session_start();
+require "navbar.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,20 +28,15 @@
 </head>
 
 <body>
-  <script>
-  $(function(){
-    $("#navIncludedContent").load("navbar.html");
-  });
-  </script>
   <div id="navIncludedContent"></div>
   <div class="container-fluid">
     <div class="row">
       <div id="topColumn" class="col-md-1"></div>
       <div id="midColumn" class="col-md-10">
-        <form action="lib/php/login.php" method="post">
+        <form action="lib/php/includes/login.inc.php" method="post">
           <div class="container">
-            <label for="AccountUsername"><b>Email</b></label>
-            <input type="text" placeholder="Enter Username" name="AccountUsername" required>
+            <label for="AccountUsernameEmail"><b>Username/Email</b></label>
+            <input type="text" placeholder="Enter Username or Email" name="AccountUsername" required>
             <label for="AccountPassword"><b>Password</b></label>
             <input type="password" placeholder="Enter Password" name="AccountPassword" required>
             <button type="submit" name="but_submit">Login</button>

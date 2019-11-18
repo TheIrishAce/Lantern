@@ -1,3 +1,7 @@
+<?php
+  require "navbar.php";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,17 +28,12 @@
 </head>
 
 <body>
-  <script>
-  $(function(){
-    $("#navIncludedContent").load("navbar.html");
-  });
-  </script>
   <div id="navIncludedContent"></div>
   <div class="container-fluid">
     <div class="row">
       <div id="topColumn" class="col-md-1"></div>
       <div id="midColumn" class="col-md-10">
-        <form action = "lib/php/register.php" method ="post">
+        <form action = "lib/php/includes/register.inc.php" method ="post">
           <div class="container">
             <label for="AccountUsername"><b>Username</b></label>
             <input type="text" placeholder="Enter Username" name="AccountUsername" required>

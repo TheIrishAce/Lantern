@@ -1,5 +1,6 @@
 <?php
-session_start();
+//session_start();
+require "navbar.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,11 +28,23 @@ session_start();
 </head>
 
 <body>
-  <script>
-  $(function(){
-    $("#navIncludedContent").load("navbar.html");
-  });
-  </script>
+  <main>
+    <div class="wrapper-main">
+      <section class="section-default">
+        <?php
+          if (isset($_SESSION['userId'])) {
+            echo '<p class="login-status">You are logged out!</p>';
+          }
+          else {
+            echo '<p class="login-status">You are logged in!</p>';
+          }
+        ?>
+
+
+      </section>
+    </div>
+
+  </main>
   <div class="container-fluid">
     <div id="navIncludedContent"></div>
     <div id="index-banner" class="position-relative overflow-hidden p-3 p-md-5 text-center bg-light">
