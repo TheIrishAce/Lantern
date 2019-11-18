@@ -1,49 +1,86 @@
 <?php
+
+  if (isset($_POST['register-submit'])) {
     include 'config.php';
-    if(isset($_POST['AccountPassword'])){
-      $AccountUsername = $_POST['AccountUsername'];
-      $AccountPassword = $_POST['AccountPassword']; 
-      $ConfirmPassword = $_POST['ConfirmPassword'];
-      if(!empty($AccountUsername) && !empty($AccountPassword) ){
+    $username = $_POST['AccountUsername'];
+    $email = $_POST['AccountEmail'];
+    $password = $_POST['AccountPassword'];
+    $passwordRepeat = $_POST['ConfirmPassword'];
 
-      $AccountUsername = filter_var($AccountUsername, FILTER_SANITIZE_STRING);
-      $AccountPassword = filter_var($AccountPassword, FILTER_SANITIZE_STRING);
-      
-      //refresh the index page after 2 seconds.
-      header("refresh:2; url=../../index.php");
-
+    if (empty($username) || empty($email) || empty($password) || empty($passwordRepeat))
+    {
+      header("Location: ../../register.html?error=emptyfields&uid=".$username."&mail=".$email);
+      exit();
     }
-
-
-      if($AccountPassword==$ConfirmPassword){
-          $query = "select * from site_account WHERE AccountUsername='$AccountUsername '";
-          $query_run =mysqli_query($conn,$query);
-          if(mysqli_num_rows($query_run)>0){
-            echo 'User already exists';
-          }
-          else{
-            $sql = "INSERT INTO site_account (AccountUsername,AccountPassword) VALUES ('$AccountUsername', '$AccountPassword')";
-            }
-            if(!mysqli_query($conn,$sql))
-            {
-              echo 'Error, Data not inserted';
-            }
-            else
-            {
-              $reg = "Account registered";
-            echo "<script type='text/javascript'>alert('$reg');</script>";
-            header("refresh:2; url=../../index.php");
-            }
-          }
-          else{
-            $PassNotM = "Passwords do not match";
-            echo "<script type='text/javascript'>alert('$PassNotM');</script>";
-            echo("<meta http-equiv='refresh' content='1'>");
-
-          }
+    else if (!filter_var($email, FILTER_VALIDATE_EMAIL) && !preg_match("/^[a-zA-Z0-9]*$/", $username))
+    {
+      header("Location: ../../register.html?error=invalidemailuid=");
+      exit();
+    }
+    else if (!filter_var($email, FILTER_VALIDATE_EMAIL))
+    {
+      header("Location: ../../register.html?error=invalidemail&uid=".$username);
+      exit();
+    }
+    else if (!preg_match("/^[a-zA-Z0-9]*$/", $username))
+    {
+      header("Location: ../../register.html?error=uid&email=".$email);
+      exit();
+    }
+    else if ($password !== $passwordRepeat) {
+      header("Location: ../../register.html?error=passwordcheck&uid=".$username."&mail=".$email);
+      exit();
+    }
+    else {
+      $sql = "SELECT AccountUsername FROM site_account WHERE AccountUsername=?";
+      $stmt = mysqli_stmt_init($conn);
+      if (!mysqli_stmt_prepare($stmt, $sql))
+      {
+        header("Location: ../../register.html?error=sqlaccountselectionerror");
+        exit();
       }
+      else
+      {
+        mysqli_stmt_bind_param($stmt, "s", $username);
+        mysqli_stmt_execute($stmt);
+        mysqli_stmt_store_result($stmt);
+        $resultCheck = mysqli_stmt_num_rows($stmt);
+        if ($resultCheck > 0)
+        {
+          header("Location: ../../register.html?error=usertaken&email=".$email);
+          exit();
+        }
+        else
+        {
+          $sql = "INSERT INTO site_account (AccountUsername, AccountEmail, AccountPassword) VALUES (?, ?, ?)";
+          $stmt = mysqli_stmt_init($conn);
+          if (!mysqli_stmt_prepare($stmt, $sql))
+          {
+            header("Location: ../../register.html?error=sqlaccountinsertionerror");
+            exit();
+          }
+          else
+          {
+            $hashedPwd = password_hash($password, PASSWORD_DEFAULT);
+            printf($username);
+            printf($email);
+            printf($hashedPwd);
 
-?>    
+            mysqli_stmt_bind_param($stmt, "sss", $username, $email, $hashedPwd);
+            mysqli_stmt_execute($stmt);
+            header("Location: ../../register.html?register=success");
+            exit();
+          }
+        }
+      }
+    }
+    mysqli_stmt_close($stmt);
+    mysqli_close($conn);
+  }
+  else
+  {
+    header("Location: ../../register.html");
+    exit();
+  }
 
-    
-  
+?>
