@@ -36,7 +36,7 @@ require "navbar.php";
         <form action="lib/php/includes/login.inc.php" method="post">
           <div class="container">
             <label for="AccountUsernameEmail"><b>Username/Email</b></label>
-            <input type="text" placeholder="Enter Username or Email" name="AccountUsername" required>
+            <input type="text" placeholder="Enter Username or Email" name="AccountUsernameEmail" required>
             <label for="AccountPassword"><b>Password</b></label>
             <input type="password" placeholder="Enter Password" name="AccountPassword" required>
             <button type="submit" name="but_submit">Login</button>
