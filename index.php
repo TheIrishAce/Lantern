@@ -25,18 +25,16 @@ require "navbar.php";
 
   <title>Lantern</title>
   <link rel="icon" href="images/Lantern.png">
-</head>
 
-<body>
   <main>
     <div class="wrapper-main">
       <section class="section-default">
         <?php
           if (isset($_SESSION['userId'])) {
-            echo '<p class="login-status">You are logged out!</p>';
+            echo '<p class="login-status">You are logged in!</p>';
           }
           else {
-            echo '<p class="login-status">You are logged in!</p>';
+            echo '<p class="login-status">You are logged out!</p>';
           }
         ?>
 
@@ -45,6 +43,9 @@ require "navbar.php";
     </div>
 
   </main>
+</head>
+
+<body>
   <div class="container-fluid">
     <div id="navIncludedContent"></div>
     <div id="index-banner" class="position-relative overflow-hidden p-3 p-md-5 text-center bg-light">
@@ -63,7 +64,7 @@ require "navbar.php";
           <rect width="100%" height="100%" fill="#777"></rect>
           <h2>Register Now</h2>
           <p>Want to try Lantern? <br> Make sure to make a free account and give it a try.</p>
-          <p><a class="btn btn-secondary" href="#" role="button">View details »</a></p>
+          <p><a class="btn btn-secondary" href="register.php" role="button">View details »</a></p>
         </div>
 
         <div class="col-lg-4 position-relative overflow-hidden p-3 p-md-5 text-center bg-light">

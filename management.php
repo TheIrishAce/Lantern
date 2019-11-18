@@ -1,6 +1,9 @@
 <?php
 //session_start();
 require "navbar.php";
+if (!isset($_SESSION['userUid'])){
+  header("Location: index.php");
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">

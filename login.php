@@ -1,6 +1,6 @@
 <?php
-//session_start();
-require "navbar.php";
+session_start();
+//require "navbar.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">

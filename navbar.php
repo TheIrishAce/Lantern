@@ -18,19 +18,83 @@
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
 
+  <!-- Custom CSS -->
+  <link rel="stylesheet" type="text/css" href="css/custom/navbar.css">
+
   <title>Lantern</title>
   <link rel="icon" href="images/Lantern.png">
 
   <div class="header-login">
-    <form action="lib/php/includes/login.inc.php" method="post">
-      <input type="text" name="AccountUsernameEmail" placeholder="Username/Email">
-      <input type="password" name="AccountPassword" placeholder="Password">
-      <button type="submit" name="login-submit">Login</button>
-    </form>
-    <a href="signup.php" class="header-signup">Signup</a>
-    <form action="lib/php/includes/logout.inc.php" method="post">
-      <button type="submit" name="logout-submit">Logout</button>
-    </form>
+    <?php
+    if (isset($_SESSION['userUid'])) {
+      echo '<nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <a class="navbar-brand" href="#"><img id="lanternLogo" src="images/Lantern.png"><b>Lantern</b></a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="author.php">Author</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="creation.php">Creation</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="management.php">Management</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="contact.php">Contact Us</a>
+              </li>
+      </ul>
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <form action="lib/php/includes/logout.inc.php" method="post">
+            <button id="logout-button" type="submit" name="logout-submit">Logout</button>
+          </form>
+        </li>
+      </ul>
+      </div>
+      </nav>';
+    }
+    else {
+      echo '<nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#"><img id="lanternLogo" src="images/Lantern.png"><b>Lantern</b></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact.php">Contact Us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="register.php">Register</a>
+            </li>
+    </ul>
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <div id="login-section">
+          <form action="lib/php/includes/login.inc.php" method="post">
+            <input type="text" id="username-input" name="AccountUsernameEmail" placeholder="Username/Email">
+            <input type="password" id="password-input" name="AccountPassword" placeholder="Password">
+            <button id="login-button" type="submit" name="login-submit">Login</button>
+          </form>
+        </div>
+      </li>
+    </ul>
+    </div>
+    </nav>';
+    }
+    ?>
   </div>
 
 </head>
@@ -38,54 +102,6 @@
   <script>
   document.cookie = "lantern=navs;SameSite=Strict;path=/";
   </script>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#"><img id="lanternLogo" src="images/Lantern.png"><b>Lantern</b></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="author.php">Author</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="creation.php">Creation</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="management.php">Management</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="contact.php">ContactUs</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="login.php">Login</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="register.php">Register</a>
-        </li>
-        <!--
-        <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Actions
-      </a>
-      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-      <a class="dropdown-item" href="creation.html">Creation Page</a>
-      <div class="dropdown-divider"></div>
-      <a class="dropdown-item" href="contact.html">Contact Us</a>
-    </div>
-  </li>
--->
-<!--
-<li class="nav-item">
-<a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-</li>
--->
-</ul>
-</div>
-</nav>
 </body>
 </html>
