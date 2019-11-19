@@ -2,7 +2,6 @@
 //session_start();
 require "navbar.php";
 ?>
-<!DOCTYPE html>
 <html lang="en">
 <head>
   <!-- Required meta tags -->
@@ -37,8 +36,6 @@ require "navbar.php";
             echo '<p class="login-status">You are logged out!</p>';
           }
         ?>
-
-
       </section>
     </div>
 

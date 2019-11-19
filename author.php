@@ -1,9 +1,8 @@
 <?php
 //session_start();
-require "navbar.php";
-if (!isset($_SESSION['userId'])){
-  header("Location: index.php");
-}
+require 'lib/php/config.php';
+require 'navbar.php';
+
 ?>
 <html lang="en">
 <head>
@@ -46,17 +45,7 @@ if (!isset($_SESSION['userId'])){
                existingStoryCharacterNLP();
              });
              </script>
-             <script type="text/javascript">
-             var timeout;
-             $('#writingArea').keypress(function() {
-               if(timeout) {
-                 clearTimeout(timeout);
-                 timeout = null;
-                 existingStoryCharacterNLP();
-               }
-               timeout = setTimeout(myFunction, 5000)
-             })
-             </script>
+
            </div>
          </div>
   		     <div id="wordPad" class="col-md-6">Typing Field

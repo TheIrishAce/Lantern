@@ -1,12 +1,11 @@
 <?php
-  //session_start();
+  session_start();
 
   if (isset($_POST['save']))
   {
-    include 'config.php';
-    include "includes/login.inc.php";
+    require 'config.php';
 
-    $AuthorId = $_SESSION['userId'];
+    $AuthorId = $_SESSION['userUid'];
 
     $TextArea = $conn->real_escape_string($_POST["storyType"]);
     if(!empty($TextArea)){
@@ -40,11 +39,9 @@
   elseif (isset($_POST['load']))
   {
     include 'config.php';
-    include "includes/login.inc.php";
-
     //AuthorId = current logged in account username
 
-    $AuthorId = $_SESSION['userId'];
+    $AuthorId = $_SESSION['userUid'];
     //var_dump($AuthorId);
 
     if ($AuthorId == "") {
