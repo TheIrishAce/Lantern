@@ -48,23 +48,23 @@ if (!isset($_SESSION['userUid'])){
                              <form id="characterInputBoxes" action ="lib/php/insertCharacter.php"  method="post">
 
                                  <em>Search Character : </em> <input type="text" id="searchCharacter" name="searchCharacter">
-                                 <button type="button" name="SearchCharacterButton" class="btn btn-success btn-block" onclick="return searchManagement()">Save</button>
+                                 <button type="button" name="SearchCharacterButton" class="btn btn-success btn-block" onclick="return searchManagementCharacter()">Search Character</button>
                                  <br/>
                                  <em>Character Name :</em> <input id="characterName" type="text" name="characterName">
                                  <br/>
                                  <em>Character Age :</em> <input id="characterAge" type="number" name="characterAge">
                                  <br/>
-                                 <em>Character DOB :</em> <input type="date" name="characterDob">
+                                 <em>Character DOB :</em> <input id="characterDob" type="date" name="characterDob">
                                  <br/>
-                                 <em>Character Gender :</em> <input type="text" name="characterGender">
+                                 <em>Character Gender :</em> <input id="characterGender" type="text" name="characterGender">
                                  <br/>
-                                 <em>Character Race :</em> <input type="text" name="characterRace">
+                                 <em>Character Race :</em> <input id="characterRace" type="text" name="characterRace">
                                  <br/>
-                                 <em>Character Personality :</em> <textarea type="text" name="characterPersonality"></textarea>
+                                 <em>Character Personality :</em> <textarea id="characterPersonality" type="text" name="characterPersonality"></textarea>
                                  <br/>
-                                 <em>Character Appearance :</em> <textarea type="text" name="characterAppearance"></textarea>
+                                 <em>Character Appearance :</em> <textarea id="characterAppearance" type="text" name="characterAppearance"></textarea>
                                  <br/>
-                                 <em>Character Species :</em> <input type="text" name="characterSpecies">
+                                 <em>Character Species :</em> <input id="characterSpecies" type="text" name="characterSpecies">
                                  <br/>
                                  <input type="submit" value="Edit Character">
                              </form>

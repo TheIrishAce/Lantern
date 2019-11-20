@@ -1,4 +1,4 @@
-function searchManagement(){
+function searchManagementCharacter(){
 
     var Character =$("#searchCharacter").val();
     var Event =$("#searchEvent").val();
@@ -10,6 +10,7 @@ function searchManagement(){
     var searchCdob =$("#characterDob").val();
     var searchCgender =$("#characterGender").val();
     var searchCrace =$("#characterRace").val();
+    var searchCPersonality =$("#characterPersonality");
     var searchCappearance =$("#characterAppearance").val();
     var searchCspecies =$("#characterSpecies").val();
 
@@ -52,8 +53,28 @@ function searchManagement(){
               console.log(obj);
               $("#characterName").val('');
               $("#characterName").val(obj.returnedCharacterName);
+
               $("#characterAge").val('');
               $("#characterAge").val(obj.returnedCharacterAge);
+
+              $("#characterDob").val('');
+              $("#characterDob").val(obj.returnedCharacterDob);
+
+              $("#characterGender").val('');
+              $("#characterGender").val(obj.returnedCharacterGender);
+
+              $("#characterRace").val('');
+              $("#characterRace").val(obj.returnedCharacterName);
+
+              $("#characterPersonality").val('');
+              $("#characterPersonality").val(obj.returnedCharacterPersonality);
+
+              $("#characterAppearance").val('');
+              $("#characterAppearance").val(obj.returnedCharacterAppearance);
+
+              $("#characterSpecies").val('');
+              $("#characterSpecies").val(obj.returnedCharacterSpecies);
+
             }
           }
 
