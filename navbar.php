@@ -86,6 +86,9 @@
             <input type="text" id="username-input" name="AccountUsernameEmail" placeholder="Username/Email">
             <input type="password" id="password-input" name="AccountPassword" placeholder="Password">
             <button id="login-button" type="submit" name="login-submit">Login</button>
+
+            <a href="reset-password.php">Forgot password?</a>
+            
           </form>
         </div>
       </li>

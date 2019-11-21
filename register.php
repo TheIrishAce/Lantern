@@ -75,9 +75,7 @@
               <input type="checkbox" checked="checked" name="remember"> Remember me
             </label>
           </div>
-          <div class="" style=>
-            <span class="AccountPassword">Forgot <a href="#">password?</a></span>
-          </div>
+          
         </form>
   </body>
 

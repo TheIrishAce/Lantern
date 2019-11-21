@@ -35,6 +35,12 @@ require "navbar.php";
           else {
             echo '<p class="login-status">You are logged out!</p>';
           }
+
+          if (isset($_GET['reset'])) {
+            if ($_GET['reset'] == "success") {
+              echo '<p class="Email sent">Check your email</p>';
+            }
+          }
         ?>
       </section>
     </div>
