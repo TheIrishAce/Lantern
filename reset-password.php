@@ -34,7 +34,7 @@
       <div id="topColumn" class="col-md-1"></div>
       <div id="midColumn" class="col-md-10">
 
-        <form action = "lib/php/includes/reset-register.inc.php" method ="post">
+        <form action = "lib/php/includes/reset-request.inc.php" method ="post">
           <div class="container">
             <input type="text" name="email" placeholder="Enter your email address...">
             <button type="submit" name ="reset-request-submit">Submit</button>
