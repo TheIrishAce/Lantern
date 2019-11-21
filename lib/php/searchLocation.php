@@ -22,7 +22,7 @@
                 $storyArray['exit'] = 'success';
                 $storyArray['returnedLocationName'] = $LocationName;
                 $storyArray['returnedLocationType'] = $LocationType;
-                $storyArray['returnedLocation'] = $LocationDescription;
+                $storyArray['returnedLocationDescription'] = $LocationDescription;
                 echo json_encode($storyArray);
 
             }

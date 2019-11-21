@@ -122,7 +122,7 @@ function searchManagementLocation(){
                     $("#locationName").val(obj.returnedLocationName);
 
                     $("#locationType").val('');
-                    $("#locatoinType").val(obj.returnedLocationType);
+                    $("#locationType").val(obj.returnedLocationType);
 
                     $("#locationDescription").val('');
                     $("#locationDescription").val(obj.returnedLocationDescription);
