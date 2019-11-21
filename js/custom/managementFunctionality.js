@@ -1,8 +1,6 @@
 function searchManagementCharacter(){
 
     var Character =$("#searchCharacter").val();
-    var Event =$("#searchEvent").val();
-    var Location =$("#searchLocation").val();
 
     //Search Character variables
     var searchCname =$("#characterName").val();
@@ -13,17 +11,6 @@ function searchManagementCharacter(){
     var searchCPersonality =$("#characterPersonality");
     var searchCappearance =$("#characterAppearance").val();
     var searchCspecies =$("#characterSpecies").val();
-
-    //Search Location variables
-    var searchLname =$("#locationName").val();
-    var searchLtype =$("#locationType").val();
-    var searchLdescription =$("#locationDescription").val();
-
-    //Search Event variables
-    var searchEname =$("#eventName").val();
-    var searchEdate =$("#eventDate").val();
-    var searchElinkcharacter =$("#eventLinkCharacter").val();
-    var searchEdescription =$("#eventDescription").val();
 
     if(Character!=""){
 
@@ -37,7 +24,7 @@ function searchManagementCharacter(){
             SearchCharacterButton: 1,
             searchCharacter:Character
         },
-        error: function (response) {
+        error: function (response){
           alert("Local error callback.");
         },
         success: function(response){
@@ -83,38 +70,149 @@ function searchManagementCharacter(){
           }
         }
     });
-    /*
-    }
 
-    else if(Event !=""){
-
-        url:'lib/php/searchEvent.php',
-        type: 'POST',
-        async: false;
-        data: {
-            save:2,
-            eventType:Event
-
-        },
-
-        success:function(response){
-            console.log(response);
-            if(response = "success"){
-
-                alert("Event Found");
-                window.location.replace("https://laterngrape.herokuapp.com/management.html");
-
-            }
-
-            else{
-             alert("Error, Event Could not be found");
-            }
-        }
-
-    }
-    */
     return false;
 
     }
+
+}
+
+function searchManagementLocation(){
+
+    var Location =$("#searchLocation").val();
+
+    //Search Location variables
+    var searchLname =$("#locationName").val();
+    var searchLtype =$("#locationType").val();
+    var searchLdescription =$("#locationDescription").val();
+
+    if(Location!=""){
+
+    $.ajax({
+
+        url:'lib/php/searchLocation.php',
+        type: 'POST',
+        async: false,
+        cache: false,
+
+        data: {
+            SearchLocationButton: 1,
+            searchLocation:Location
+        },
+
+        error: function (response){
+            alert("Local error callback.");
+
+        },
+
+        success: function(response){
+            console.log(response);
+            try{
+
+                var obj = JSON.parse(response);
+
+                if(obj.exit =="success")
+                {
+                    console.log(Location);
+                    console.log(response);
+                    alert("Location Found");
+                    console.log(obj);
+
+                    $("#locationName").val('');
+                    $("#locationName").val(obj.returnedLocationName);
+
+                    $("#locationType").val('');
+                    $("#locatoinType").val(obj.returnedLocationType);
+
+                    $("#locationDescription").val('');
+                    $("#locationDescription").val(obj.returnedLocationDescription);
+
+                }
+
+            }
+
+            catch(err){
+
+                alert("No Location found with that name " + Location + " found.");
+
+            }
+
+        }
+
+    });
+
+    return false;
+    }
+}
+
+function searchManagementEvent(){
+
+    var Event =$("#searchEvent").val();
+
+    //Search Event variables
+    var searchEname =$("#eventName").val();
+    var searchEdate =$("#eventDate").val();
+    var searchElinkcharacter =$("#eventLinkCharacter").val();
+    var searchEkingdom =$("#eventKingdom").val();
+    var searchEdescription =$("#eventDescription").val();
+
+
+    if(Event!=""){
+
+        $.ajax({
+
+            url:'lib/php/searchEvent.php',
+            type: 'POST',
+            async: false,
+            cache: false,
+
+            data: {
+
+                SearchEventButton: 1,
+                searchEvent:Event
+            },
+
+            error: function (response){
+                alert("Local error callback.");
+            },
+
+            success: function (response){
+                console.log(response);
+                try{
+                    var obj = JSON.parse(response);
+                    if(obj.exit =="success")
+                    {
+                        console.log(Event);
+                        console.log(response);
+                        alert("Event Found");
+                        console.log(obj);
+
+                        $("#eventName").val('');
+                        $("#eventName").val(obj.returnedEventName);
+
+                        $("#eventDate").val('');
+                        $("#eventDate").val(obj.returnedEventData);
+
+                        $("#eventLinkCharacter").val('');
+                        $("#eventLinkCharacter").val(obj.returnedEventLinkCharacter);
+
+                        $("#eventKingdom").val('');
+                        $("#eventKingdom").val(obj.returnedEventKingdom);
+
+                        $("#eventDescription").val('');
+                        $("#eventDescription").val(obj.returnedEventDescription);
+                    }
+                }
+
+                catch(err) {
+                    alert("No Event With that name " + Event + " found.");
+                }
+            }
+
+        });
+
+        return false;
+    }
+
 
 }

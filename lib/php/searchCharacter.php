@@ -11,6 +11,7 @@
             $query = "SELECT * FROM story_character WHERE CharacterName = '$SearchedCharacter'";
             $result = $conn->query($query);
             $data = $result->fetch_assoc();
+
             $CharacterName = $data['CharacterName'];
             $CharacterAge = $data['CharacterAge'];
             $CharacterDob = $data['CharacterDob'];

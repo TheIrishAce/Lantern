@@ -81,20 +81,20 @@ if (!isset($_SESSION['userUid'])){
                          <div class="card-body form-group">
                              <form id="locationInputBoxes" action="lib/php/insertLocation.php" method="post">
                                  <div class="form-group">
-                                     <em>Search Location: </em><input type ="text" name = searchLocation>
-                                     <button id="searchBTN"  name="SearchL" class="btn btn-success" onclick="return insertStory()">Search</button>
+                                     <em>Search Location: </em><input id="searchLocation" type ="text" name = searchLocation>
+                                     <button id="SearchLocationButton" type ="button" name="SearchLocationButton" class="btn btn-success" onclick="return searchManagementLocation()">Search Location</button>
                                      <br/>
-                                     <em>Location Name :</em> <input type="text" name="locationName">
+                                     <em>Location Name :</em> <input id="locationName" type="text" name="locationName">
                                      <br/>
                                      <em>Location Type :</em>
-                                     <select name="locationType">
+                                     <select id="locationType" name="locationType">
                                          <option value="kingdom">Kingdom</option>
                                          <option value="empire">Empire</option>
                                          <option value="city">City</option>
                                          <option value="building">Building</option>
                                      </select>
                                      <br/>
-                                     <em>Location Description :</em> <input type="text" name="locationDescription">
+                                     <em>Location Description :</em> <input id="locationDescription" type="text" name="locationDescription">
                                      <br/>
                                      <input type="submit" value="Edit Location">
                                  </div>
@@ -111,18 +111,18 @@ if (!isset($_SESSION['userUid'])){
                      <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
                          <div class="card-body">
                              <form id="eventInputBoxes" action = "lib/php/insertEvent.php" method ="post">
-                                 <em>Search Events: </em><input type="text" name="searchEvent">
-                                 <button id ="searchBTN" type="button" name="SearchE" class="btn btn-success" onclick="return insertStory()">Search</button>
+                                 <em>Search Events: </em><input id="searchEvent" type="text" name="searchEvent">
+                                 <button id ="SearchEventButton" type="button" name="SearchEventButton" class="btn btn-success" onclick="return searchManagementEvent()">Search Event</button>
                                  <br/>
-                                 <em>Event Name: </em><input type="text" name="eventName">
+                                 <em>Event Name: </em><input id="eventName" type="text" name="eventName">
                                  <br/>
-                                 <em>Event Date: </em><input type="Date" name="eventDate">
+                                 <em>Event Date: </em><input id="eventDate" type="Date" name="eventDate">
                                  <br/>
-                                 <em>Event Characters: </em><input type="text" name="eventLinkCharacter">
+                                 <em>Event Characters: </em><input id="eventLinkCharacter" type="text" name="eventLinkCharacter">
                                  <br/>
-                                 <em>Event Kingdoms: </em><input type="text" name="eventLinkKingdom">
+                                 <em>Event Kingdoms: </em><input id="eventLinkKingdom" type="text" name="eventLinkKingdom">
                                  <br/>
-                                 <em>Event Description :</em> <textarea type="text" name="eventDescription"></textarea>
+                                 <em>Event Description :</em> <textarea id="eventDescription" type="text" name="eventDescription"></textarea>
                                  <br/>
                                  <input type="submit" name="Create Event" value ="Edit Event">
                              </form>
