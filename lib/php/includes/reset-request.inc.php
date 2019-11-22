@@ -9,7 +9,7 @@
 
    $expires =date("U")+900;
 
-   require 'config.php';
+   require '../config.php';
 
     $userEmail=$_POST["email"];
 
