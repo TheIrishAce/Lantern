@@ -21,7 +21,7 @@
       mysqli_stmt_execute($stmt);
     }
 
-    $sql="INSERT INTO password_reset(email_reset,selector_reset,token_reset,expires_resert)VALUES(?,?,?,?); ";
+    $sql="INSERT INTO password_reset(email_reset,selector_reset,token_reset,expires_resert)VALUES(?,?,?,?) ";
     $stmt= mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt,$sql)){
       echo "There was an error!!!";
@@ -33,7 +33,7 @@
     }
 
     mysqli_stmt_close($stmt);
-    mysqli_close();
+    mysqli_close($conn);
 
     $to=$userEmail;
 
