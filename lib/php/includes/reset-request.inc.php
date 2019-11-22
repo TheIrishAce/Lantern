@@ -51,8 +51,8 @@
 
     mail($to,$subject,$message,$headers);
 
-    header("Location: ../../index.php?reset=success");
+    header("Location: ../../../index.php?reset=success");
 
  }else{
-   header("Location: ../../index.php");
+   header("Location: ../../../index.php");
  }
