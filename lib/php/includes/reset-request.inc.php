@@ -10,6 +10,7 @@
    $expires =date("U")+900;
 
    require '../config.php';
+   require_once('PHPMailer/PHPMailerAutoload.php');
 
     $userEmail=$_POST["email"];
 
@@ -39,17 +40,25 @@
 
     $to=$userEmail;
 
-    $subject= "Reset your password for Lantern";
 
-    $message ='<p>We recevied a password reset request for your account the click the link to reset your password, if you have not requested this you can ignore this</p>';
-    $message.='<p>Here is the link to reset your password: <br>';
-    $message.='<a href="'. $url . '">'.$url . '</a><p>';
 
-    $headers="From: Latern<lanternwritingapp@gmail.com>\r\n";
-    $headers.= "Reply-To: lanternwritingapp@gmail.com\r\n";
-    $headers.= "Content-type: text/html\r\n";
 
-    mail($to,$subject,$message,$headers);
+    $mail=new PHPMailer();
+    $mail->isSMTP();
+    $mail->SMTPAuth=true;
+    $mail->SMTPSecure='ssl';
+    $mail->Host='smtp.gmail.com';
+    $mail->Port='465';
+    $mail->isHTML();
+    $mail->Username='lanternwritingapp@gmail.com'
+    $mail->Password='Evangeline201';
+    $mail->SetFrom('no-reply: lanternwritingapp@gmail.com');
+    $mail->Subject='Forgotten password';
+    $mail->Body=$url;
+    $mail->AddAddress($to);
+
+    $mail->Send();
+
 
     header("Location: ../../../index.php?reset=success");
 
