@@ -36,8 +36,8 @@
 
         <form action = "lib/php/includes/reset-request.inc.php" method ="post">
           <div class="container">
-            <input type="text" name="email" placeholder="Enter your email address...">
-            <button type="submit" name ="reset-request-submit">Submit</button>
+            <input type="text" name="userEmail" placeholder="Enter your email address...">
+            <button type="submit" name ="resetEmail">Submit</button>
 
 
           </div>

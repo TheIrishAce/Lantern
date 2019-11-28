@@ -1,18 +1,17 @@
 <?php
 
 
- if (isset($_POST["reset-request-submit"])){
+ if (isset($_POST["resetEmail"])){
    $selector=bin2hex(random_bytes(8));
    $token=random_bytes(32);
+   $pageUserEmail = $_POST['userEmail'];
 
    $url="https://lanterngrape.herokuapp.com/create-new-password.php?selector=".$selector ."&validator=".bin2hex($token);
 
    $expires =date("U")+900;
 
    require '../config.php';
-   require_once('PHPMailer/PHPMailerAutoload.php');
-
-    $userEmail=$_POST["email"];
+   require_once '../../../PHPMailer/PHPMailerAutoload.php';
 
     $sql="DELETE FROM password_reset WHERE email_reset=?";
     $stmt= mysqli_stmt_init($conn);
@@ -38,29 +37,34 @@
     mysqli_stmt_close($stmt);
     mysqli_close($conn);
 
-    $to=$userEmail;
+    //$to=$userEmail;
 
 
 
 
-    $mail=new PHPMailer();
-    $mail->isSMTP();
-    $mail->SMTPAuth=true;
-    $mail->SMTPSecure='ssl';
-    $mail->Host='smtp.gmail.com';
-    $mail->Port='465';
-    $mail->isHTML();
-    $mail->Username='lanternwritingapp@gmail.com'
-    $mail->Password='Evangeline201';
-    $mail->SetFrom('no-reply: lanternwritingapp@gmail.com');
-    $mail->Subject='Forgotten password';
-    $mail->Body=$url;
-    $mail->AddAddress($to);
+    $mail=new PHPMailer(true);
+    try{
+      $mail->isSMTP();
+      $mail->SMTPAuth=true;
+      $mail->SMTPSecure='ssl';
+      $mail->Host='smtp.gmail.com';
+      $mail->Port='465';
+      $mail->isHTML(true);
+      $mail->Username='lanternwritingapp@gmail.com';
+      $mail->Password='Evangeline201';
+      $mail->SetFrom('lanternwritingapp@gmail.com');
+      $mail->Subject='Forgotten password';
+      $mail->Body=$url;
+      $mail->AddAddress($pageUserEmail);
 
-    $mail->Send();
+      $mail->Send();
 
 
-    header("Location: ../../../index.php?reset=success");
+      header("Location: ../../../index.php?reset=success");
+    }catch(Exception $e){
+      echo'Failed';
+    }
+
 
  }else{
    header("Location: ../../../index.php");
