@@ -45,7 +45,7 @@ if (!isset($_SESSION['userUid'])){
                      </div>
                      <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
                          <div class ="card-body">
-                             <form id="characterInputBoxes" action ="lib/php/insertCharacter.php"  method="post">
+                             <form id="characterInputBoxes"  method="post">
 
                                  <em>Search Character : </em> <input type="text" id="searchCharacter" name="searchCharacter">
                                  <button type="button" name="SearchCharacterButton" class="btn btn-success btn-block" onclick="return searchManagementCharacter()">Search Character</button>
@@ -66,7 +66,7 @@ if (!isset($_SESSION['userUid'])){
                                  <br/>
                                  <em>Character Species :</em> <input id="characterSpecies" type="text" name="characterSpecies">
                                  <br/>
-                                 <input type="submit" value="Edit Character">
+                                 <button type="button" name="updateCharacterButton" class="btn btn-success btn-block" onclick ="return updateManagementCharacter()"> Edit Character</button>
                              </form>
                          </div>
                      </div>

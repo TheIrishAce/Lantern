@@ -216,3 +216,70 @@ function searchManagementEvent(){
 
 
 }
+
+function updateManagementCharacter(){
+
+    var Character =$("#searchCharacter").val();
+
+    //Search Character variables
+    var updateCname =$("#characterName").val();
+    var updateCage =$("#characterAge").val();
+    var updateCdob =$("#characterDob").val();
+    var updateCgender =$("#characterGender").val();
+    var updateCrace =$("#characterRace").val();
+    var updateCPersonality =$("#characterPersonality");
+    var updateCappearance =$("#characterAppearance").val();
+    var updateCspecies =$("#characterSpecies").val();
+
+    if(Character!=""){
+
+     $.ajax({
+
+            url:'lib/php/updateCharacter.php',
+            type: 'POST',
+            async: false,
+            cache: false,
+            data: {
+                updateCharacterButton: 1,
+                searchCharacter:Character,
+                characterName: updateCname,
+                characterAge: updateCage
+            },
+            error: function (response){
+              alert("Local error callback.");
+            },
+            success: function(response){
+              console.log(response);
+              //try {
+                //var obj = JSON.parse(response);
+                if (response =="success")
+                {
+
+                alert("Character Updated");
+
+                }
+              //}
+
+              //catch(err) {
+                //alert("Unable to update character details.");
+              //}
+            }
+        });
+
+
+
+
+
+
+
+
+
+
+
+
+    }
+
+
+
+
+}
