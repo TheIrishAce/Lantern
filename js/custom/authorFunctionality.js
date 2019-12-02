@@ -58,21 +58,30 @@ function fetchStory() {
       success: function(response){
         //console.log(response);
 
-        var obj = JSON.parse(response);
-        console.log(obj);
-        if (obj.exit =="success") {
-          //alert(obj.exit);
-          //var test = $("#writingArea").val();
-          $("#writingArea").val('');
-          $("#writingArea").val(obj.UserStory.UserStory);
-          //alert(obj.UserStory.UserStory);
-          //document.getElementById('writingArea').innerHTML = "";
-          //document.getElementById('writingArea').innerHTML = obj.UserStory.UserStory;
-          alert ("Story Loaded");
+        try {
+          var obj = JSON.parse(response);
+          console.log(obj);
+
+          if (obj.exit =="success") {
+            //alert(obj.exit);
+            //var test = $("#writingArea").val();
+            $("#writingArea").val('');
+            $("#writingArea").val(obj.UserStory.UserStory);
+            //alert(obj.UserStory.UserStory);
+            //document.getElementById('writingArea').innerHTML = "";
+            //document.getElementById('writingArea').innerHTML = obj.UserStory.UserStory;
+            alert ("Story Loaded");
+          }
+          else
+          {
+            alert ("Error, story doesn't exist or couldn't be loaded.");
+          }
         }
-        else
-        {
-          alert ("Error, story doesn't exist or couldn't be loaded.");
+        catch (e) {
+          alert("NOTICE: This account doesn't have a story to load");
+        }
+        finally {
+
         }
       }
     });

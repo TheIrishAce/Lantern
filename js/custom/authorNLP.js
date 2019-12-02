@@ -8,25 +8,31 @@ function existingStoryCharacterNLP()
   var fName;
   var lName;
   var combinedNames = [];
+  try {
+    var fNames = storyInput.people().firstNames().data();
+    var lNames = storyInput.people().lastNames().data();
 
-  var fNames = storyInput.people().firstNames().data();
-  var lNames = storyInput.people().lastNames().data();
+    var counter=0;
+    fNames.forEach(function(nestedArray) {
+      //console.log(counter);
+      tempFName = fNames[counter].text;
+      fName = tempFName.replace(/\s/g, '');
+      lName = lNames[counter].text;
+      combinedNames[counter] = fName+lName;
+      //console.log(combinedNames[counter]);
+      //console.log(combinedNames[counter]);
+      counter++
+    });
+
+    var jsonString = JSON.stringify(combinedNames);
+    console.log(jsonString);
+  } catch (e) {
+    alert("No characters found in current story.");
+  } finally {
+
+  }
   //console.log(fNames);
   //console.log(lNames);
-  var counter=0;
-  fNames.forEach(function(nestedArray) {
-    //console.log(counter);
-    tempFName = fNames[counter].text;
-    fName = tempFName.replace(/\s/g, '');
-    lName = lNames[counter].text;
-    combinedNames[counter] = fName+lName;
-    //console.log(combinedNames[counter]);
-    //console.log(combinedNames[counter]);
-    counter++
-  });
-
-  var jsonString = JSON.stringify(combinedNames);
-  console.log(jsonString);
 
   $.ajax({
     url: 'lib/php/fetchCharacterNLP.php',
@@ -63,7 +69,6 @@ function existingStoryCharacterNLP()
       catch(err)
       {
         //alert("No character records for " + fNames + lNames + " found");
-        alert("One or more character records not found");
       }
     }
   });

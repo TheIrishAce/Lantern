@@ -41,6 +41,9 @@ require 'navbar.php';
              <button type="button" id="loadStory" name="load" class="btn btn-primary btn-block" onclick="return fetchStory()">Load</button>
              <script type="text/javascript" src="js/custom/authorNLP.js"></script>
              <script type="text/javascript">
+             $( document ).ready(function() {
+               $("#writingArea").val('');
+             });
              $("#loadStory").click(function(){
                existingStoryCharacterNLP();
              });

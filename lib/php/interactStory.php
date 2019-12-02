@@ -11,19 +11,29 @@
     if(!empty($TextArea)){
       $TextArea = filter_var($TextArea, FILTER_SANITIZE_STRING);
 
-      //Original insertion method. (Didn't link author)
-      //$data = $conn->query("INSERT INTO user_story (UserStory) VALUES ('$TextArea')");
-
       //data1 used to insert story.
       //data 2 used to set temp var with user of story just inserted.
       //data 3 used to update the inserted story with the correct owner.
-      $data1 = $conn->query("INSERT INTO user_story (UserStory) VALUES ('$TextArea')");
-      $query1 = "SET @tempVar =(SELECT UserStoryId from user_story WHERE UserStory='$TextArea')";
-      $data2 = $conn->query($query1);
-      $data3 = $conn->query("UPDATE user_story SET user_story.UserStoryAuthor = '$AuthorId' WHERE user_story.UserStoryId=@tempVar");
+      $tempCheckStoryExist = $conn->query("SELECT UserStoryId from user_story WHERE UserStoryAuthor='$AuthorId'");
+      //var_dump();
+      if ($tempCheckStoryExist->num_rows == 0)
+      {
+        $insertNewStory = $conn->query("INSERT INTO user_story (UserStoryAuthor, UserStory) VALUES ('$AuthorId','$TextArea')");
+        //echo "false";
+      }
+      else if ($tempCheckStoryExist->num_rows > 0)
+      {
+        //$checkStoryExist = $conn->query($tempCheckStoryExist);
+        $tempCheckStoryExist = $conn->query("SET @tempVar =(SELECT UserStoryId from user_story WHERE UserStoryAuthor='$AuthorId')");
+        $updateExistingStory = $conn->query("UPDATE user_story SET user_story.UserStory = '$TextArea' WHERE user_story.UserStoryId=@tempVar");
+        //echo "true";
+      }
+      else
+      {
+        echo "Error";
+      }
 
-      //success case if data1 - 3 excutes without errors.
-      if ($data1 && $data2 && $data3)
+      if ($insertNewStory || $updateExistingStory)
       {
           exit('success');
 	    }
