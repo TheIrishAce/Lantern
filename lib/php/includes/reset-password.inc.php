@@ -6,14 +6,13 @@ if(isset($_POST["reset-password-submit"])){
   $password=$_POST["pwd"];
   $passwordRepeat=$_POST["pwd-repeat"];
 
-  if(empty($password)||empty($passwordRepeat)){
-    header("Location:../create-new-password.php?selector=".$selector ."&validator"=.bin2hex($token));
-    exit();
-
-  }elseif ($password!=$passwordRepeat) {
-    header("Location:../create-new-password.php?selector=".$selector ."&validator"=.bin2hex($token));
-    exit();
-  }
+  if (empty($password) || empty($passwordRepeat)) {
+      header("Refresh:0");
+      exit();
+    } else if ($password != $passwordRepeat) {
+      header("Refresh:0");
+      exit();
+    }
 
   $currentDate=date("U");
 
@@ -40,7 +39,7 @@ if(isset($_POST["reset-password-submit"])){
         exit();
       }elseif ($tokenCheck===true) {
         $tokenEmail=$row['email_reset'];
-        $sql="SELECT * FROM site_account WHERE AccountEmail=?;";
+        $sql="SELECT * FROM site_account WHERE AccountEmail=?";
         $stmt= mysqli_stmt_init($conn);
         if (!mysqli_stmt_prepare($stmt,$sql)){
           echo "There was an error!!!";
@@ -53,7 +52,8 @@ if(isset($_POST["reset-password-submit"])){
             echo "There was an error";
             exit();
           }else {
-            $sql="UPDATE site_account SET AccountPassword=?WHERE AccountEmail=? ";
+            $sql="UPDATE site_account SET AccountPassword=? WHERE AccountEmail=? ";
+            $stmt = mysqli_stmt_init($conn);
             if (!mysqli_stmt_prepare($stmt,$sql)){
               echo "There was an error!!!";
               exit();
@@ -62,7 +62,7 @@ if(isset($_POST["reset-password-submit"])){
               mysqli_stmt_bind_param($stmt,"ss",$newPwdHash,$tokenEmail);
               mysqli_stmt_execute($stmt);
 
-              $sql="DELETE FROM password_reset WHERE email_reset=?; ";
+              $sql="DELETE FROM password_reset WHERE email_reset=? ";
               $stmt= mysqli_stmt_init($conn);
               if (!mysqli_stmt_prepare($stmt,$sql)){
                 echo "There was an error!!!";
