@@ -1,5 +1,11 @@
 <?php
   require "navbar.php";
+  require "config.php";
+  if(!isset($_GET["code"])){
+    exit("Can't find page");
+  }
+  $code=$_GET["code"];
+  $getEmailQuery=mysqli_query($conn,"SELECT email FROM resetPasswords WHERE code='$code'");
 ?>
 
 <!DOCTYPE html>
@@ -33,29 +39,23 @@
     <div class="row">
       <div id="topColumn" class="col-md-1"></div>
       <div id="midColumn" class="col-md-10">
-        <?php
-        $selector=$_GET["selector"];
-        $validator=$_GET["validator"];
 
-        if(empty($selector)||empty($validator)){
-          echo "Could not validate your request";
-        }else{
-          if(ctype_xdigit($selector)!==false&&ctype_xdigit($validator)!==false){
-            ?>
-            <form action = "lib/php/includes/reset-password.inc.php" method ="post">
+
+
+            <form action = "lib/php/includes/reset-password.inc.php" method ="post" >
               <div class="container">
-                <input type="hidden" name="selector" value="<?php echo $selector;?>">
-                <input type="hidden" name="validator" value="<?php echo $validator;?>">
+
+                <input type="submit" name="em" value="<?php echo $getEmailQuery?>">
                 <input type="password" name="pwd" placeholder="Enter a new password">
                 <input type="password" name="pwd-repeat" placeholder="Enter a new password again">
                 <button type="submit" name="reset-password-submit">Reset Password</button>
               </div>
 
             </form>
-            <?php
+
           }
         }
-         ?>
+
 
 
   </body>
