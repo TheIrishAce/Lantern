@@ -16,15 +16,15 @@ require '../config.php';
    else
     {
   //   $url="https://lanterngrape.herokuapp.com/create-new-password.php?selector=".$selector ."&validator=".bin2hex($token);
-//$url="http://127.0.0.1/Lantern/create-new-password.php?selector=".$selector ."&validator=".bin2hex($token);
+
      $expires =date("U")+900;
 
 
      require_once '../../../PHPMailer/PHPMailerAutoload.php';
      $code=uniqid(true);
      $query= mysqli_query($conn, "INSERT INTO resetPasswords(code, email) VALUES('$code','$pageUserEmail')");
-     $url="https://" . $_SERVER["HTTP_HOST"] . dirname($_SERVER["PHP_SELF"]) . "/create-new-password.php?code=$code";
-
+     $url="http://" . $_SERVER["HTTP_HOST"] . dirname($_SERVER["PHP_SELF"]) . "/create-new-password.php?code=$code";
+//$url="http://127.0.0.1/Lantern/create-new-password.php?code=".$code;
 
 
 
