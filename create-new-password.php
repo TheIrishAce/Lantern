@@ -2,7 +2,7 @@
   require "navbar.php";
 
 
-require "lib\php\config.php";
+require "config.php";
               if(!isset($_GET["code"])){
                 exit("Can't find page");
               }
@@ -22,7 +22,7 @@ require "lib\php\config.php";
                   $query=mysqli_query($conn, "DELETE FROM resetPasswords WHERE email='$email'");
                   exit("password updated");
                 }
-
+              }
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
