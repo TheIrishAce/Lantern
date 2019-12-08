@@ -241,9 +241,7 @@ function updateManagementCharacter(){
             cache: false,
             data: {
                 updateCharacterButton: 1,
-                searchCharacter:Character,
-                characterName: updateCname,
-                characterAge: updateCage
+                searchCharacter:Character
             },
             error: function (response){
               alert("Local error callback.");
@@ -266,20 +264,100 @@ function updateManagementCharacter(){
             }
         });
 
-
-
-
-
-
-
-
-
-
-
-
     }
 
+}
 
+function updateManagementLocation(){
 
+      var Location =$("#searchLocation").val();
+      var updateLname =$("#LocationName").val();
+      var updateLtype =$("#LocationType").val();
+      var updateLDescription =$("#LocationDescription").val();
+
+      if(Location!=""){
+
+      $.ajax({
+
+        url:'lib/php/updateLocation.php',
+        type: 'POST',
+        async: false,
+        cache: false,
+        data: {
+            updateLocationButton: 1,
+            searchLocation: Location
+
+        },
+
+                   error: function (response){
+                      alert("Local error callback.");
+                    },
+                    success: function(response){
+                      console.log(response);
+                      //try {
+                        //var obj = JSON.parse(response);
+                        if (response =="success")
+                        {
+
+                        alert("Location Updated");
+
+                        }
+                      //}
+
+                      //catch(err) {
+                        //alert("Unable to update Location details.");
+                      //}
+                    }
+
+      });
+
+      }
+}
+
+function updateManagementEvent(){
+
+        var Event =$("#searchEvent");
+        var updateEname=$("#EventName");
+        var updateEdate=$("#EventDate");
+        var updateEDescirption=$("#EventDescription");
+
+        if(Event!=""){
+
+        $.ajax({
+
+        url:'lib/php/updateEvent.php',
+        type:'POST',
+        async: false,
+        cache: false,
+        data: {
+
+            updateEventButton: 1,
+            searchEvent:Event
+
+        },
+
+             error: function (response){
+             alert("Local error callback.");
+             },
+             success: function(response){
+             console.log(response);
+             //try {
+             //var obj = JSON.parse(response);
+             if (response =="success")
+              {
+
+               alert("Location Updated");
+
+                                }
+                              //}
+
+                              //catch(err) {
+                                //alert("Unable to update Location details.");
+                              //}
+                            }
+
+        });
+
+        }
 
 }
