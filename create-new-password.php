@@ -14,25 +14,28 @@ require 'lib/php/config.php';
                 $passwordRepeat=$_POST['pwd-repeat'];
 
                 if(empty($password)||empty($passwordRepeat)){
-                  header('Refresh: ');
+                  header("Refresh:0");
 
 
                 }elseif ($password!=$passwordRepeat) {
-                  header('Refresh: ');
-                  
+                  header("Refresh:0");
+
+                }
+                else {
+                  $newPwdHash = password_hash($password,PASSWORD_DEFAULT);
+                  $row=mysqli_fetch_array($getEmailQuery);
+                  $email=$row["email"];
+
+
+                  $query=mysqli_query($conn, "UPDATE site_account SET AccountPassword='$newPwdHash' WHERE AccountEmail='$email'");
+                  if($query){
+                    $query=mysqli_query($conn, "DELETE FROM resetPasswords WHERE email='$email'");
+                    exit("password updated");
+                    header("Location: index.php?reset=success");
+                  }
                 }
 
-                $newPwdHash = password_hash($password,PASSWORD_DEFAULT);
-                $row=mysqli_fetch_array($getEmailQuery);
-                $email=$row["email"];
 
-
-                $query=mysqli_query($conn, "UPDATE site_account SET AccountPassword='$newPwdHash' WHERE AccountEmail='$email'");
-                if($query){
-                  $query=mysqli_query($conn, "DELETE FROM resetPasswords WHERE email='$email'");
-                  exit("password updated");
-                  header("Location: index.php?reset=success");
-                }
               }
 ?>
 <!DOCTYPE html>
