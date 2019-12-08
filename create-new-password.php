@@ -3,9 +3,7 @@
 
 
 require "config.php";
-              if(!isset($_GET["code"])){
-                exit("Can't find page");
-              }
+            
               $code=$_GET["code"];
               $getEmailQuery=mysqli_query($conn,"SELECT email FROM resetPasswords WHERE code='$code'");
 
