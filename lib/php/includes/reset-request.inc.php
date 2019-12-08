@@ -23,7 +23,8 @@ require '../config.php';
      require_once '../../../PHPMailer/PHPMailerAutoload.php';
      $code=uniqid(true);
      $query= mysqli_query($conn, "INSERT INTO resetPasswords(code, email) VALUES('$code','$pageUserEmail')");
-     $url="http://" . $_SERVER["HTTP_HOST"] . "/create-new-password.php?code=$code";
+     //$url="http://" . $_SERVER["HTTP_HOST"] . "/create-new-password.php?code=$code";
+     $url="https://lanterngrape.herokuapp.com/create-new-password.php?code=".$code;
 //$url="http://127.0.0.1/Lantern/create-new-password.php?code=".$code;
 
 
