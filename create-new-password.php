@@ -12,6 +12,16 @@ require 'lib/php/config.php';
               if(isset($_POST['reset-password-submit'])){
                 $password=$_POST['pwd'];
                 $passwordRepeat=$_POST['pwd-repeat'];
+
+                if(empty($password)||empty($passwordRepeat)){
+                  header('Refresh: ');
+                  exit();
+
+                }elseif ($password!=$passwordRepeat) {
+                  header('Refresh: ');
+                  exit();
+                }
+
                 $newPwdHash = password_hash($password,PASSWORD_DEFAULT);
                 $row=mysqli_fetch_array($getEmailQuery);
                 $email=$row["email"];
@@ -21,6 +31,7 @@ require 'lib/php/config.php';
                 if($query){
                   $query=mysqli_query($conn, "DELETE FROM resetPasswords WHERE email='$email'");
                   exit("password updated");
+                  header("Location: index.php?reset=success");
                 }
               }
 ?>
