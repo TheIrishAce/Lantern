@@ -2,25 +2,7 @@
   require "navbar.php";
 
 
-require "config.php";
-            
-              $code=$_GET["code"];
-              $getEmailQuery=mysqli_query($conn,"SELECT email FROM resetPasswords WHERE code='$code'");
 
-              if(isset($_POST['reset-password-submit'])){
-                $password=$_POST['pwd'];
-                $passwordRepeat=$_POST['pwd-repeat'];
-                $newPwdHash = password_hash($password,PASSWORD_DEFAULT);
-                $row=mysqli_fetch_array($getEmailQuery);
-                $email=$row["email"];
-
-
-                $query=mysqli_query($conn, "UPDATE site_account SET AccountPassword='$newPwdHash' WHERE AccountEmail='$email'");
-                if($query){
-                  $query=mysqli_query($conn, "DELETE FROM resetPasswords WHERE email='$email'");
-                  exit("password updated");
-                }
-              }
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -64,3 +46,24 @@ require "config.php";
     </form>
   </body>
 </html>
+<?php require "lib\php\config.php";
+              if(!isset($_GET["code"])){
+                exit("Can't find page");
+              }
+              $code=$_GET["code"];
+              $getEmailQuery=mysqli_query($conn,"SELECT email FROM resetPasswords WHERE code='$code'");
+
+              if(isset($_POST['reset-password-submit'])){
+                $password=$_POST['pwd'];
+                $passwordRepeat=$_POST['pwd-repeat'];
+                $newPwdHash = password_hash($password,PASSWORD_DEFAULT);
+                $row=mysqli_fetch_array($getEmailQuery);
+                $email=$row["email"];
+
+
+                $query=mysqli_query($conn, "UPDATE site_account SET AccountPassword='$newPwdHash' WHERE AccountEmail='$email'");
+                if($query){
+                  $query=mysqli_query($conn, "DELETE FROM resetPasswords WHERE email='$email'");
+                  exit("password updated");
+                }
+              } ?>
