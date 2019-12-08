@@ -63,13 +63,8 @@ function fetchStory() {
           console.log(obj);
 
           if (obj.exit =="success") {
-            //alert(obj.exit);
-            //var test = $("#writingArea").val();
             $("#writingArea").val('');
             $("#writingArea").val(obj.UserStory.UserStory);
-            //alert(obj.UserStory.UserStory);
-            //document.getElementById('writingArea').innerHTML = "";
-            //document.getElementById('writingArea').innerHTML = obj.UserStory.UserStory;
             alert ("Story Loaded");
           }
           else
@@ -80,9 +75,7 @@ function fetchStory() {
         catch (e) {
           alert("NOTICE: This account doesn't have a story to load");
         }
-        finally {
-
-        }
+        finally {}
       }
     });
   //}
