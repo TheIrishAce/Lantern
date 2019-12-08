@@ -15,11 +15,11 @@ require 'lib/php/config.php';
 
                 if(empty($password)||empty($passwordRepeat)){
                   header('Refresh: ');
-                  exit();
+
 
                 }elseif ($password!=$passwordRepeat) {
                   header('Refresh: ');
-                  exit();
+                  
                 }
 
                 $newPwdHash = password_hash($password,PASSWORD_DEFAULT);
