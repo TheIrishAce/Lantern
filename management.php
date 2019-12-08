@@ -48,7 +48,8 @@ if (!isset($_SESSION['userUid'])){
                              <form id="characterInputBoxes"  method="post">
 
                                  <em>Search Character : </em> <input type="text" id="searchCharacter" name="searchCharacter">
-                                 <button type="button" name="SearchCharacterButton" class="btn btn-success btn-block" onclick="return searchManagementCharacter()">Search Character</button>
+                                 <br/>
+                                 <button type="button" name="SearchCharacterButton" class="btn btn-success" onclick="return searchManagementCharacter()">Search Character</button>
                                  <br/>
                                  <em>Character Name :</em> <input id="characterName" type="text" name="characterName">
                                  <br/>
@@ -66,7 +67,7 @@ if (!isset($_SESSION['userUid'])){
                                  <br/>
                                  <em>Character Species :</em> <input id="characterSpecies" type="text" name="characterSpecies">
                                  <br/>
-                                 <button type="button" name="updateCharacterButton" class="btn btn-success btn-block" onclick ="return updateManagementCharacter()"> Edit Character</button>
+                                 <button type="button" name="updateCharacterButton" class="btn btn-info" onclick ="return updateManagementCharacter()"> Edit Character</button>
                              </form>
                          </div>
                      </div>
@@ -82,6 +83,7 @@ if (!isset($_SESSION['userUid'])){
                              <form id="locationInputBoxes" action="lib/php/insertLocation.php" method="post">
                                  <div class="form-group">
                                      <em>Search Location: </em><input id="searchLocation" type ="text" name = searchLocation>
+                                     <br/>
                                      <button id="SearchLocationButton" type ="button" name="SearchLocationButton" class="btn btn-success" onclick="return searchManagementLocation()">Search Location</button>
                                      <br/>
                                      <em>Location Name :</em> <input id="locationName" type="text" name="locationName">
@@ -96,7 +98,7 @@ if (!isset($_SESSION['userUid'])){
                                      <br/>
                                      <em>Location Description :</em> <input id="locationDescription" type="text" name="locationDescription">
                                      <br/>
-                                     <input type="submit" value="Edit Location">
+                                     <button type="button" name="updateLocationButton" class="btn btn-info" onclick ="return updateManagementLocation()"> Edit Location</button>
                                  </div>
                              </form>
                          </div>
@@ -112,6 +114,7 @@ if (!isset($_SESSION['userUid'])){
                          <div class="card-body">
                              <form id="eventInputBoxes" action = "lib/php/insertEvent.php" method ="post">
                                  <em>Search Events: </em><input id="searchEvent" type="text" name="searchEvent">
+                                 <br/>
                                  <button id ="SearchEventButton" type="button" name="SearchEventButton" class="btn btn-success" onclick="return searchManagementEvent()">Search Event</button>
                                  <br/>
                                  <em>Event Name: </em><input id="eventName" type="text" name="eventName">
@@ -124,7 +127,7 @@ if (!isset($_SESSION['userUid'])){
                                  <br/>
                                  <em>Event Description :</em> <textarea id="eventDescription" type="text" name="eventDescription"></textarea>
                                  <br/>
-                                 <input type="submit" name="Create Event" value ="Edit Event">
+                                 <button type="button" name="updateEventButton" class="btn btn-info" onclick ="return updateManagementEvent()"> Edit Event</button>
                              </form>
                          </div>
                      </div>

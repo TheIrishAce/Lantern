@@ -7,9 +7,9 @@ body{
 	background-color: #f5f5f5;
 }
 
-.button{
-    background-color: #2525D5
-    color: black;
+.btn-success{
+    background-color: #FFF
+    text-color:black;
     padding 10px;
     text-align: center;
     font-size: 16px;
